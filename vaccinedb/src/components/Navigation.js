@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Citation for the following function:
+// Date: 10/22/2021 
+// Adapted from:
+// Source URL: https://www.w3schools.com/howto/howto_js_topnav.asp
+
 function Navigation() {
   // console.log(location.pathname);    // debugging use
   // Checks the current path and display appropriate Links

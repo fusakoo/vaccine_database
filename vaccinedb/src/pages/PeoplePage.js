@@ -5,8 +5,11 @@ function PeoplePage() {
     return (
         <>
             <Navigation/>
-            <h1>People Page</h1>
-            <p>Test 123.</p>
+            <h1>People</h1>
+            <p>
+                Records the details of people in the US.
+                Records the doses of vaccine taken by each person.
+		    </p>
         </>
     );
 }

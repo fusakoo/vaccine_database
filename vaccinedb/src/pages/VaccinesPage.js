@@ -5,8 +5,8 @@ function VaccinesPage() {
     return (
         <>
             <Navigation/>
-            <h1>Vaccines Page</h1>
-            <p>Test 123.</p>
+            <h1>Vaccines</h1>
+            <p>Records the details of covid-19 vaccines.</p>
         </>
     );
 }

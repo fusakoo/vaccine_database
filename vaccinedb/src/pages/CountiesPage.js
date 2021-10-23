@@ -5,8 +5,8 @@ function CountiesPage() {
     return (
         <>
             <Navigation/>
-            <h1>Counties Page</h1>
-            <p>Test 123.</p>
+            <h1>Counties</h1>
+            <p>Records the counties where people resides and sites are located in.</p>
         </>
     );
 }

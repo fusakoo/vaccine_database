@@ -7,7 +7,7 @@ function HomePage() {
         <>
             <Navigation/>
             <h1>US COVID-19 Vaccine Database</h1>
-            <p>Vaccination database website backed by mariadb.</p>
+            <p>Vaccine database website backed by mariadb.</p>
         </>
     );
 }
