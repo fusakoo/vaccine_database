@@ -6,8 +6,6 @@ import VaccinesPage from './pages/VaccinesPage';
 import ClinicSitesPage from './pages/ClinicSitesPage';
 import CountiesPage from './pages/CountiesPage';
 
-
-
 function App() {  
   return (
     <div className="App">
