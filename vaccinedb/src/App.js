@@ -1,23 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import PeoplePage from './pages/PeoplePage';
+import VaccinesPage from './pages/VaccinesPage';
+import ClinicSitesPage from './pages/ClinicSitesPage';
+import CountiesPage from './pages/CountiesPage';
 
-function App() {
+
+
+function App() {  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <header className="App-header">
+            <Route path="/" exact>
+              <HomePage />
+            </Route>
+            <Route path="/people">
+              <PeoplePage />
+            </Route>
+            <Route path="/vaccines">
+              <VaccinesPage />
+            </Route>
+            <Route path="/clinicsites">
+              <ClinicSitesPage />
+            </Route>
+            <Route path="/counties">
+              <CountiesPage />
+            </Route>
+        </header>
+      </Router>
     </div>
   );
 }
