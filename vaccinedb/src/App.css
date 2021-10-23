@@ -40,6 +40,9 @@
 .topnav {
   background-color: #333333;
   overflow: hidden;
+  top: 0px;
+  position: fixed;
+  width: 100%;
 }
 
 .topnav a:hover {
