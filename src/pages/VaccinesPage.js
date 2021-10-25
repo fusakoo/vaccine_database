@@ -6,7 +6,7 @@ function VaccinesPage() {
         <>
             <Navigation/>
             <h1>Vaccines</h1>
-            <p>Records the details of covid-19 vaccines.</p>
+            <p>This page shows the details of covid-19 vaccines on record.</p>
         </>
     );
 }

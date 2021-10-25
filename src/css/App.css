@@ -1,4 +1,7 @@
+/* General CSS */
+
 .App {
+  font-family: Arial, Helvetica, sans-serif;
   text-align: center;
 }
 
@@ -14,46 +17,89 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color:white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
-/* .App-link {
-  color: #61dafb;
-} */
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-header h1 {
+  padding-top: 100px;
+  font-size: 1.5em;
 }
+
+.App-header p {
+  max-width: 90%;
+  font-size: 0.6em;
+}
+
+/* Table CSS */
+
+.table-container {
+  width: 90%;
+  border-collapse: collapse;
+  margin-left: 20px;
+  margin-top: 30px;
+}
+
+.table-container td, .table-container th {
+  border-bottom: 1px solid rgba(0,0,0,0.5);
+  padding: 5px;
+  font-size: 0.6em;
+}
+
+.table-container tr:hover {
+  background-color: #eee;
+  transition: 0.3s;
+}
+
+.table-container th {
+  border-bottom: 4px solid rgba(0,0,0,0.8);
+  background-color: #fff;
+}
+
+caption {
+  text-align: left;
+  margin-bottom: 5px;
+  font-size: 0.7em;
+  font-weight: bold;
+}
+
+.selector-button {
+  cursor: pointer;
+  color: #0acaff;
+}
+
+.selector-button:hover {
+  color: #0089fa;
+  transition: 0.5s;
+}
+
+/* Navbar CSS */
 
 .topnav {
-  background-color: #333333;
+  background-color: #222222;
   overflow: hidden;
   top: 0px;
   position: fixed;
   width: 100%;
+  transition: 0.5s;
 }
 
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: #0acaff;
   color: black;
+  transition: 0.5s;
 }
 
-.topnav a.active {
+/* .topnav a.active {
   background-color: #61dafb;
   color: white;
-}
+} */
 
 .App-link {
   float: left;

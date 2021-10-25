@@ -1,12 +1,14 @@
 import './css/App.css';
-import people from './data/clinicSites'
+// Data imports
+import people from './data/people'
 import doses from './data/doses'
 import vaccines from './data/vaccines'
 import vaccinesAvailable from './data/vaccinesAvailable'
 import clinicSites from './data/clinicSites'
 import counties from './data/counties'
-
+// Router import
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+// Individual pages
 import HomePage from './pages/HomePage';
 import PeoplePage from './pages/PeoplePage';
 import VaccinesPage from './pages/VaccinesPage';

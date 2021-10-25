@@ -1,17 +1,17 @@
 import React from 'react';
 import Navigation from './../components/Navigation'
 import PeopleTable from './../components/PeopleTable'
+import DosesTable from './../components/DosesTable'
 
-function PeoplePage({ people }) {
+
+function PeoplePage({ people, doses }) {
     return (
         <>
             <Navigation/>
             <h1>People</h1>
-            <p>
-                Records the details of people in the US.
-                Records the doses of vaccine taken by each person.
-		    </p>
+            <p>This page shows the records of people in the US as well as the doses taken by each individual.</p>
             <PeopleTable people={people}></PeopleTable>
+            <DosesTable doses={doses}></DosesTable>
         </>
     );
 }
