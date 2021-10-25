@@ -9,7 +9,7 @@ function PeoplePage({ people, doses }) {
         <>
             <Navigation/>
             <h1>People</h1>
-            <p>This page shows the records of people in the US as well as the doses taken by each individual.</p>
+            <p>This page shows the records of people in the US and the doses taken by each individual.</p>
             <PeopleTable people={people}></PeopleTable>
             <DosesTable doses={doses}></DosesTable>
         </>

@@ -4,7 +4,7 @@ import Dose from './../components/Dose'
 function DosesTable({ doses }) {
   return (
       <table className="table-container">
-          <caption>Doses Taken by People</caption>
+          <caption>Dose(s) Taken by People</caption>
           <thead>
             <tr>
               <th>id</th>
