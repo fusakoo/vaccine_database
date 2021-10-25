@@ -1,7 +1,8 @@
 import React from 'react';
 import Navigation from './../components/Navigation'
+import PeopleTable from './../components/PeopleTable'
 
-function PeoplePage() {
+function PeoplePage({ people }) {
     return (
         <>
             <Navigation/>
@@ -10,6 +11,7 @@ function PeoplePage() {
                 Records the details of people in the US.
                 Records the doses of vaccine taken by each person.
 		    </p>
+            <PeopleTable people={people}></PeopleTable>
         </>
     );
 }

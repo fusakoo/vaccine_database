@@ -1,4 +1,5 @@
 import './css/App.css';
+import people from './data/people'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import PeoplePage from './pages/PeoplePage';
@@ -15,7 +16,7 @@ function App() {
               <HomePage />
             </Route>
             <Route path="/people">
-              <PeoplePage />
+              <PeoplePage people={people}></PeoplePage>
             </Route>
             <Route path="/vaccines">
               <VaccinesPage />
