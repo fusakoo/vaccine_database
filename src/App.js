@@ -1,5 +1,11 @@
 import './css/App.css';
-import people from './data/people'
+import people from './data/clinicSites'
+import doses from './data/doses'
+import vaccines from './data/vaccines'
+import vaccinesAvailable from './data/vaccinesAvailable'
+import clinicSites from './data/clinicSites'
+import counties from './data/counties'
+
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import PeoplePage from './pages/PeoplePage';
@@ -16,16 +22,16 @@ function App() {
               <HomePage />
             </Route>
             <Route path="/people">
-              <PeoplePage people={people}></PeoplePage>
+              <PeoplePage people={people} doses={doses}></PeoplePage>
             </Route>
             <Route path="/vaccines">
-              <VaccinesPage />
+              <VaccinesPage vaccines={vaccines}></VaccinesPage>
             </Route>
             <Route path="/clinicsites">
-              <ClinicSitesPage />
+              <ClinicSitesPage clinicSites={clinicSites} vaccinesAvailable={vaccinesAvailable}></ClinicSitesPage>
             </Route>
             <Route path="/counties">
-              <CountiesPage />
+              <CountiesPage counties={counties}></CountiesPage>
             </Route>
         </header>
       </Router>
