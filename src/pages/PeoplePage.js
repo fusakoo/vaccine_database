@@ -1,9 +1,9 @@
 import React from 'react';
 import Navigation from './../components/Navigation'
-import PeopleTable from './../components/PeopleTable'
-import PeopleForm from './../components/PeopleForm'
-import DosesTable from './../components/DosesTable'
-import DosesForm from './../components/DosesForm'
+import PeopleTable from '../components/People/PeopleTable'
+import PeopleForm from './../components/People/PeopleForm'
+import DosesTable from '../components/Doses/DosesTable'
+import DosesForm from './../components/Doses/DosesForm'
 
 
 function PeoplePage({ people, doses }) {

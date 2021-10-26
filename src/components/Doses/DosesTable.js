@@ -1,5 +1,5 @@
 import React from 'react';
-import Dose from './../components/Dose'
+import Dose from './Dose'
 
 function DosesTable({ doses }) {
   return (
