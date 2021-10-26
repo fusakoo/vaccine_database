@@ -103,6 +103,14 @@ form {
   padding: 0.1em;
 }
 
+.form-group a {
+  color: var(--sub-color);
+}
+
+.form-group a:visited {
+  color: var(--sub-color);
+}
+
 .form-control {
   display: block;
   width: 80%;
