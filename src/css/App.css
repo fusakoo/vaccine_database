@@ -1,0 +1,189 @@
+/* General CSS */
+
+:root {
+  --accent-color: #D1CB17;
+  --sub-color: #AA77D6;
+}
+
+.App {
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color:white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+.App-header h1 {
+  padding-top: 130px;
+  font-size: 1.5em;
+}
+
+.App-header p {
+  max-width: 90%;
+  font-size: 0.6em;
+}
+
+/* Table CSS */
+
+.table-container {
+  width: 90%;
+  border-collapse: collapse;
+  margin-left: 20px;
+  margin-top: 30px;
+}
+
+.table-container td, .table-container th {
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  padding: 5px;
+  font-size: 0.6em;
+}
+
+.table-container tr:hover {
+  background-color: rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.table-container th {
+  border-bottom: 3px solid rgba(0,0,0,0.8);
+  background-color: #fff;
+}
+
+caption {
+  text-align: left;
+  margin-bottom: 5px;
+  font-size: 0.7em;
+  font-weight: bold;
+}
+
+.selector-button {
+  cursor: pointer;
+  color: var(--accent-color);
+}
+
+.selector-button:hover {
+  color: var(--sub-color);
+  transition: 0.15s;
+}
+
+
+/* Form CSS */
+
+form {
+  background: rgba(0,0,0,0.8);
+  color: white;
+  text-align: left;
+  font-size: 17px;
+  margin: 1% 10% 1% 10%;
+  border-radius: 0.5rem;
+  padding: 1rem 2rem;
+  width: 80%;
+}
+
+.form-group {
+  margin: 0 auto 0.5rem auto;
+  padding: 0.1em;
+}
+
+.form-group a {
+  color: var(--sub-color);
+}
+
+.form-group a:visited {
+  color: var(--sub-color);
+}
+
+.form-control {
+  display: block;
+  width: 80%;
+  height: 1.5em;
+  padding: 0.375em 0.75em;
+  color: #5e6079;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 2px solid #65699b;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: var(--sub-color);
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(82, 0, 214, 0.25);
+}
+
+button {
+  display: block;
+  position: relative;
+  width: 10%;
+  padding: 0.4rem;
+  background: var(--accent-color);
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: 3px solid #D1CB17;
+}
+
+.required {
+  margin-left: 0.1rem;
+  font-size: 1.5rem;
+  color: var(--accent-color);
+}
+
+.optional {
+  margin-left: 0.1rem;
+  font-size: 0.9rem;
+  color: #b1b1b1;
+}
+
+/* Navbar CSS */
+
+.topnav {
+  background-color: #222222;
+  overflow: hidden;
+  top: 0px;
+  position: fixed;
+  width: 100%;
+}
+
+.topnav a:hover {
+  color: var(--accent-color);
+  transition: 0.8s;
+}
+
+/* For some reason this is not working :( */
+/* .topnav a.active {
+  background-color: #61dafb;
+  color: white;
+} */
+
+.App-link {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 0.5em;
+}
