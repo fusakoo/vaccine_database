@@ -1,5 +1,10 @@
 /* General CSS */
 
+:root {
+  --accent-color: #D1CB17;
+  --sub-color: #AA77D6;
+}
+
 .App {
   font-family: Helvetica, Arial, sans-serif;
   text-align: center;
@@ -53,7 +58,7 @@
 }
 
 .table-container tr:hover {
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0,0,0,0.1);
   transition: 0.3s;
 }
 
@@ -71,12 +76,78 @@ caption {
 
 .selector-button {
   cursor: pointer;
-  color: #0acaff;
+  color: var(--accent-color);
 }
 
 .selector-button:hover {
-  color: #0089fa;
-  transition: 0.5s;
+  color: var(--sub-color);
+  transition: 0.15s;
+}
+
+
+/* Form CSS */
+
+form {
+  background: rgba(0,0,0,0.8);
+  color: white;
+  text-align: left;
+  font-size: 17px;
+  margin: 1% 10% 1% 10%;
+  border-radius: 0.5rem;
+  padding: 1rem 2rem;
+  width: 80%;
+}
+
+.form-group {
+  margin: 0 auto 0.5rem auto;
+  padding: 0.1em;
+}
+
+.form-control {
+  display: block;
+  width: 80%;
+  height: 1.5em;
+  padding: 0.375em 0.75em;
+  color: #5e6079;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 2px solid #65699b;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: var(--sub-color);
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(82, 0, 214, 0.25);
+}
+
+button {
+  display: block;
+  position: relative;
+  width: 10%;
+  padding: 0.4rem;
+  background: var(--accent-color);
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: 3px solid #D1CB17;
+}
+
+.required {
+  margin-left: 0.1rem;
+  font-size: 1.5rem;
+  color: var(--accent-color);
+}
+
+.optional {
+  margin-left: 0.1rem;
+  font-size: 0.9rem;
+  color: #b1b1b1;
 }
 
 /* Navbar CSS */
@@ -90,7 +161,7 @@ caption {
 }
 
 .topnav a:hover {
-  color: #0acaff;
+  color: var(--accent-color);
   transition: 0.8s;
 }
 
