@@ -38,9 +38,16 @@
 }
 
 .App-header p {
-  max-width: 90%;
   font-size: 0.6em;
 }
+
+.App-header footer {
+  font-size: 0.8em;
+  margin-bottom: 20px;
+  position: fixed;
+  bottom: 0px;
+}
+
 
 /* Table CSS */
 
