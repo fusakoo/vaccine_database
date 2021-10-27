@@ -8,7 +8,7 @@ function Validate(county_fips_code, state) {
     errors.push("Can't Have Negative {county_fips_code}");
   }
 
-  else if (county_fips_code < 01001) { 
+  else if (county_fips_code < 1001) { 
     errors.push("Invalid {county_fips_code}");
   }
 
