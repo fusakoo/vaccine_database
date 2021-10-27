@@ -4,7 +4,7 @@ import County from './County'
 function CountiesTable({ counties }) {
   return (
       <table className="table-container">
-          <caption>Vaccine(s) Available</caption>
+          <caption>List of Counties</caption>
           <thead>
             <tr>
               <th>county_fips_code</th>
