@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 function Validate(county_fips_code) { 
 
   const errors = [];
