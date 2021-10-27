@@ -1,46 +1,100 @@
 import React from 'react';
 
-function CountiesForm() {
-  return (
-      <form className="new-input">
+function Validate(county_fips_code, state) { 
+
+  const errors = [];
+
+  if (county_fips_code < 0) { 
+    errors.push("Can't Have Negative {county_fips_code}");
+  }
+
+  if (!(/[a-z]{2}/.test(state)) || state.length != 2) {
+    errors.push("Invalid Format For {date_taken}");
+  }
+
+  return errors;
+}
+class CountiesForm extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      county_fips_code: -1,
+      county_name: "",
+      state: "",
+      errors: []
+    };
+  }
+
+  HandleSubmit = (e) => {
+    e.preventDefault();
+
+    const { county_fips_code, county_name, state } = this.state;
+
+    // DO SQL INSERT
+
+    const errors = Validate(county_fips_code, state);
+    const hasErrors = errors.length > 0;
+    if (hasErrors) { 
+      this.setState({ errors });
+      return;
+    }
+
+  };
+
+  render() {
+    const { errors } = this.state;
+
+    return (
+      <form className="new-input" onSubmit={this.HandleSubmit}>
+        {errors.map(error => (
+          <p key={error}>Error: {error}</p>
+        ))}
         <p><span className="required">* </span><span className="optional">Is required</span></p>
         <div class="form-group">
-            <label>county_fips_code <span className="required">*</span>
-              <input
-                  type="number"
-                  name="county_fips_code"
-                  placeholder="County FIPS code"
-                  className="form-control"
-                  required
-              />
-            </label>
+          <label>county_fips_code <span className="required">*</span>
+            <input
+              value={this.state.county_fips_code}
+              onChange={e => this.setState({ county_fips_code: e.target.value })}
+              type="number"
+              name="county_fips_code"
+              placeholder="County FIPS code"
+              className="form-control"
+              required
+            />
+          </label>
         </div>
         <div class="form-group">
-            <label>county_name <span className="required">*</span>
-              <input
-                  type="text"
-                  name="county_name"
-                  placeholder="County name"
-                  className="form-control"
-                  required
-              />
-            </label>
+          <label>county_name <span className="required">*</span>
+            <input
+              value={this.state.county_name}
+              onChange={e => this.setState({ county_name: e.target.value })}
+              type="text"
+              name="county_name"
+              placeholder="County name"
+              className="form-control"
+              required
+            />
+          </label>
         </div>
         <div class="form-group">
-            <label>state <span className="optional">(Optional)</span>
-              <input
-                  type="text"
-                  name="state"
-                  placeholder="State (e.g. 'CA', 'WA')"
-                  className="form-control"
-              />
-            </label>
+          <label>state <span className="optional">(Optional)</span>
+            <input
+              value={this.state.state}
+              onChange={e => this.setState({ state: e.target.value })}
+              type="text"
+              name="state"
+              placeholder="State (e.g. 'CA', 'WA')"
+              className="form-control"
+            />
+          </label>
         </div>   
         <div class="form-group">
-            <button type="submit" id="submit" className="submit-button">Add New</button>
+          <button type="submit" id="submit" className="submit-button">Add New</button>
         </div> 
       </form>
-  );
+    );
+  }
 }
 
 export default CountiesForm;
