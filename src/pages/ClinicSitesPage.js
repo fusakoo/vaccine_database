@@ -4,6 +4,8 @@ import VAForm from '../components/VaccinesAvailable/VAForm'
 import VATable from '../components/VaccinesAvailable/VATable'
 import CSTable from '../components/ClinicSites/CSTable'
 import CSForm from '../components/ClinicSites/CSForm'
+import VaccinesInClinicSitesTable from '../components/VaccinesInClinicSites/VaccinesInClinicSitesTable'
+import VaccinesInClinicSitesForm from '../components/VaccinesInClinicSites/VaccinesInClinicSitesForm'
 
 function ClinicSitesPage( {clinicSites, vaccinesAvailable}) {
     return (
@@ -15,6 +17,8 @@ function ClinicSitesPage( {clinicSites, vaccinesAvailable}) {
             <CSForm/>
             <VATable vaccinesAvailable={vaccinesAvailable}></VATable>
             <VAForm/>
+            <VaccinesInClinicSitesTable></VaccinesInClinicSitesTable>
+            <VaccinesInClinicSitesForm/>
         </>
     );
 }
