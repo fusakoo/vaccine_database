@@ -4,6 +4,8 @@ import PeopleTable from '../components/People/PeopleTable'
 import PeopleForm from '../components/People/PeopleForm'
 import DosesTable from '../components/Doses/DosesTable'
 import DosesForm from '../components/Doses/DosesForm'
+import DoesesInPeopleTable from '../components/DoesesInPeople/DoesesInPeopleTable'
+import DoesesInPeopleForm from '../components/DoesesInPeople/DoesesInPeopleForm'
 
 
 function PeoplePage({ people, doses }) {
@@ -16,6 +18,8 @@ function PeoplePage({ people, doses }) {
             <PeopleForm/>
             <DosesTable doses={doses}></DosesTable>
             <DosesForm/>
+            <DoesesInPeopleTable></DoesesInPeopleTable>
+            <DoesesInPeopleForm/>
         </>
     );
 }
