@@ -13,8 +13,6 @@ function CSTable({ clinicSites }) {
               <th>city</th>
               <th>postal_code</th>
               <th>county_fips_code</th>
-              <th>Edit</th>
-              <th>Delete</th>
             </tr>
           </thead>
           <tbody>

@@ -10,7 +10,6 @@ function DosesTable({ doses }) {
               <th>id</th>
               <th>research_name</th> 
               <th>date_taken</th>
-              <th>Edit</th>
               <th>Delete</th>
             </tr>
           </thead>

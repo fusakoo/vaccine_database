@@ -10,8 +10,6 @@ function CountiesTable({ counties }) {
               <th>county_fips_code</th>
               <th>county_name</th> 
               <th>state</th>
-              <th>Edit</th>
-              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
