@@ -1,40 +1,87 @@
 import React from 'react';
 
-function PeopleForm() {
-  const [status, setStatus] = React.useState(0) // 0: show new form, 1: show update form
+function Validate(birth_date) { 
 
-  const radioHandler = (status) => {
-    setStatus(status);
+  const errors = [];
+
+  if (!(/^\d{4}[\-](0?[1-9]|1[012])[\-](0?[1-9]|[12][0-9]|3[01])$/.test(birth_date.length))) {
+    errors.push("Invalid Date Format");
+  }
+
+  return errors;
+}
+
+class PeopleForm extends React.Component{
+
+  constructor() {
+    super();
+    this.state = {
+      id: "",
+      last_name: "",
+      first_name: "",
+      birth_date: "",
+      site_id: null,
+      errors: [],
+      status: 0
+    };
+  }
+
+  HandleSubmit = (e) => {
+    e.preventDefault();
+
+    const { id, last_name, first_name, birth_date, site_id } = this.state;
+
+    // DO SQL INSERT
+
+    const errors = Validate(birth_date);
+    const hasErrors = errors.length > 0;
+    if (hasErrors) { 
+      this.setState({ errors });
+      return;
+    }
+
+    // send the form...
   };
 
-  return (
-      <>
-        <form className="new-input">
+  // New entry/Update entry toggle 
+  radioHandler = (status) => {
+    this.setState({ status });
+  };
+
+  render() {
+    const { errors } = this.state;
+    const { status } = this.state;
+
+    return (
+        <form className="new-input" onSubmit={this.HandleSubmit}>
+          {errors.map(error => (
+            <p key={error}>Error: {error}</p>
+          ))}
           <div className="form-group">
             <input 
-                // value="new" 
                 type="radio" 
                 name="formselector" 
                 className="input-radio"
                 checked={status === 0}
-                onClick={(e) => radioHandler(0)}
+                onClick={(e) => this.radioHandler(0)}
             />Add New Entry
             <br/>
             <input 
-                // value="update" 
                 type="radio" 
                 name="formselector" 
                 className="input-radio"
                 checked={status === 1}
-                onClick={(e) => radioHandler(1)}
+                onClick={(e) => this.radioHandler(1)}
             />Edit Existing
           </div>
           <p><span className="required">* </span><span className="optional">Is required</span></p>
           {status === 0 && (
             <>
-              <div className="form-group">
+              <div class="form-group">
                 <label>last_name <span className="required">*</span>
                   <input
+                      value={this.state.last_name}
+                      onChange={e => this.setState({ last_name: e.target.value })}
                       type="text"
                       name="last_name"
                       placeholder="Last name"
@@ -43,48 +90,56 @@ function PeopleForm() {
                   />
                 </label>
               </div>
-              <div className="form-group">
-                  <label>first_name <span className="required">*</span>
-                    <input
-                        type="text"
-                        name="first_name"
-                        placeholder="First name"
-                        className="form-control"
-                        required
-                    />
-                  </label>
+              <div class="form-group">
+                <label>first_name <span className="required">*</span>
+                  <input
+                      value={this.state.first_name}
+                      onChange={e => this.setState({ first_name: e.target.value })}
+                      type="text"
+                      name="first_name"
+                      placeholder="First name"
+                      className="form-control"
+                      required
+                  />
+                </label>
               </div>
-              <div className="form-group">
-                  <label>birth_date <span className="required">*</span>
-                    <input
-                        type="text"
-                        name="birth_date"
-                        placeholder="YYYY-MM-DD"
-                        className="form-control"
-                        required
-                    />
-                  </label>
+              <div class="form-group">
+                <label>birth_date <span className="required">*</span>
+                  <input
+                      value={this.state.birth_date}
+                      onChange={e => this.setState({ birth_date: e.target.value })}
+                      type="text"
+                      name="birth_date"
+                      placeholder="YYYY-MM-DD"
+                      className="form-control"
+                      required
+                  />
+                </label>
               </div>
-              <div className="form-group">
-                  <label>site_id <span className="optional">(Optional)</span>
-                    <input
-                        type="number"
-                        name="site_id"
-                        placeholder="Site ID"
-                        className="form-control"
-                    />
-                  </label>
-              </div>
-              <div className="form-group">
+              <div class="form-group">
+                <label>site_id <span className="optional">(Optional)</span>
+                  <input
+                      value={this.state.site_id}
+                      onChange={e => this.setState({ site_id: e.target.value })}
+                      type="number"
+                      name="site_id"
+                      placeholder="Site ID"
+                      className="form-control"
+                  />
+                </label>
+              </div>       
+              <div class="form-group">
                   <button type="submit" id="submit" className="submit-button">Add New</button>
               </div> 
             </>
           )}
           {status === 1 && (
             <>
-              <div className="form-group">
+              <div class="form-group">
                   <label>id <span className="required">*</span>
                     <input
+                        value={this.state.id}
+                        onChange={e => this.setState({ id: e.target.value })}
                         type="number"
                         name="id"
                         placeholder="Person's ID"
@@ -93,46 +148,50 @@ function PeopleForm() {
                     />
                   </label>
               </div>
-              <div className="form-group">
+              <div class="form-group">
                 <label>last_name <span className="optional">(Optional)</span>
                   <input
+                      value={this.state.last_name}
+                      onChange={e => this.setState({ last_name: e.target.value })}
                       type="text"
                       name="last_name"
                       placeholder="Last name"
                       className="form-control"
-                      required
                   />
                 </label>
               </div>
-              <div className="form-group">
-                  <label>first_name <span className="optional">(Optional)</span>
-                    <input
-                        type="text"
-                        name="first_name"
-                        placeholder="First name"
-                        className="form-control"
-                        required
-                    />
-                  </label>
+              <div class="form-group">
+                <label>first_name <span className="optional">(Optional)</span>
+                  <input
+                      value={this.state.first_name}
+                      onChange={e => this.setState({ first_name: e.target.value })}
+                      type="text"
+                      name="first_name"
+                      placeholder="First name"
+                      className="form-control"
+                  />
+                </label>
               </div>
-              <div className="form-group">
+              <div class="form-group">
                   <label>site_id <span className="optional">(Optional)</span>
                     <input
+                        value={this.state.site_id}
+                        onChange={e => this.setState({ site_id: e.target.value })}
                         type="number"
                         name="site_id"
                         placeholder="Site ID"
                         className="form-control"
                     />
                   </label>
-              </div>
+              </div> 
               <div className="form-group">
-                <button type="submit" id="submit" className="submit-button">Update</button>
+                  <button type="submit" id="submit" className="submit-button">Update</button>
               </div> 
             </>
-          )} 
+          )}
         </form>
-      </>
-  );
+    );
+  }
 }
 
 export default PeopleForm;
