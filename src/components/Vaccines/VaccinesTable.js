@@ -10,8 +10,6 @@ function VaccinesTable({ vaccines }) {
               <th>research_name</th>
               <th>manufacturer</th> 
               <th>vaccine_type</th>
-              <th>Edit</th>
-              <th>Delete</th>
             </tr>
           </thead>
           <tbody>

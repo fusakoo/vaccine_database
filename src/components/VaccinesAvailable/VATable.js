@@ -9,8 +9,6 @@ function VATable({ vaccinesAvailable }) {
             <tr>
               <th>site_id</th>
               <th>research_name</th> 
-              <th>Edit</th>
-              <th>Delete</th>
             </tr>
           </thead>
           <tbody>

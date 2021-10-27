@@ -13,7 +13,6 @@ function PeopleTable({ people }) {
               <th>birth_date</th>
               <th>site_id</th>
               <th>Edit</th>
-              <th>Delete</th>
             </tr>
           </thead>
           <tbody>

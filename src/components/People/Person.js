@@ -1,5 +1,5 @@
 import React from 'react';
-import { MdEditNote, MdDelete } from 'react-icons/md';
+import { MdEditNote } from 'react-icons/md';
 
 
 function Person({ person }) {
@@ -11,7 +11,6 @@ function Person({ person }) {
           <td>{person.birth_date}</td>
           <td>{person.site_id}</td>
           <td className="selector-button"><MdEditNote/></td>
-          <td className="selector-button"><MdDelete/></td>
       </tr>
   );
 }
