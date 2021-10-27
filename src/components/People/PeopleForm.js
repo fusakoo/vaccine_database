@@ -52,6 +52,7 @@ class PeopleForm extends React.Component {
     const { status } = this.state;
 
     return (
+<<<<<<< HEAD
         <form className="new-input" onSubmit={this.HandleSubmit}>
           {errors.map(error => (
             <p key={error}>Error: {error}</p>
@@ -189,6 +190,68 @@ class PeopleForm extends React.Component {
             </>
           )}
         </form>
+=======
+      <form className="new-input" onSubmit={this.HandleSubmit}>
+        {errors.map(error => (
+          <p key={error}>Error: {error}</p>
+        ))}
+        <p><span className="required">* </span><span className="optional">Is required</span></p>
+        <div class="form-group">
+          <label>last_name <span className="required">*</span>
+            <input
+              value={this.state.last_name}
+              onChange={e => this.setState({ last_name: e.target.value })}
+              type="text"
+              name="last_name"
+              placeholder="Last name"
+              className="form-control"
+              required
+            />
+          </label>
+        </div>
+        <div class="form-group">
+          <label>first_name <span className="required">*</span>
+            <input
+              value={this.state.first_name}
+              onChange={e => this.setState({ first_name: e.target.value })}
+              type="text"
+              name="first_name"
+              placeholder="First name"
+              className="form-control"
+              required
+            />
+          </label>
+        </div>
+        <div class="form-group">
+          <label>birth_date <span className="required">*</span>
+            <input
+              value={this.state.birth_date}
+              onChange={e => this.setState({ birth_date: e.target.value })}
+              type="text"
+              name="birth_date"
+              placeholder="YYYY-MM-DD"
+              className="form-control"
+              required
+            />
+          </label>
+        </div>
+        <div class="form-group">
+          <label>site_id <span className="optional">(Optional)</span>
+            <input
+              value={this.state.site_id}
+              onChange={e => this.setState({ site_id: e.target.value })}
+              type="number"
+              name="site_id"
+              placeholder="Site ID"
+              className="form-control"
+            />
+          </label>
+        </div>       
+        <div class="form-group">
+          <button type="submit" id="submit" className="submit-button">Add New</button>
+        </div> 
+      </form>
+>>>>>>> ace1f03 (Fixed indentations)
     );
   }
 }

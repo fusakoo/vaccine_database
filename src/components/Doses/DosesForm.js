@@ -46,52 +46,52 @@ class DosesForm extends React.Component {
     const { errors } = this.state;
 
     return (
-        <form className="new-input" onSubmit={this.HandleSubmit}>
-          {errors.map(error => (
-            <p key={error}>Error: {error}</p>
-          ))}
+      <form className="new-input" onSubmit={this.HandleSubmit}>
+        {errors.map(error => (
+          <p key={error}>Error: {error}</p>
+        ))}
         <p><span className="required">* </span><span className="optional">Is required</span></p>
         <div class="form-group">
-            <label>id <span className="required">*</span>
-              <input
-                  value={this.state.id}
-                  onChange={e => this.setState({ id: e.target.value })}
-                  type="number"
-                  name="id"
-                  placeholder="Person ID"
-                  className="form-control"
-                  required
-              />
-            </label>
+          <label>id <span className="required">*</span>
+            <input
+              value={this.state.id}
+              onChange={e => this.setState({ id: e.target.value })}
+              type="number"
+              name="id"
+              placeholder="Person ID"
+              className="form-control"
+              required
+            />
+          </label>
         </div>
         <div class="form-group">
-            <label>research_name <span className="required">*</span>
-              <input
-                  value={this.state.research_name}
-                  onChange={e => this.setState({ research_name: e.target.value })}
-                  type="text"
-                  name="research_name"
-                  placeholder="Research name"
-                  className="form-control"
-                  required
-              />
-            </label>
+          <label>research_name <span className="required">*</span>
+            <input
+              value={this.state.research_name}
+              onChange={e => this.setState({ research_name: e.target.value })}
+              type="text"
+              name="research_name"
+              placeholder="Research name"
+              className="form-control"
+              required
+            />
+          </label>
         </div>
         <div class="form-group">
-            <label>date_taken <span className="required">*</span>
-              <input
-                  value={this.state.date_taken}
-                  onChange={e => this.setState({ date_taken: e.target.value })}
-                  type="text"
-                  name="date_taken"
-                  placeholder="YYYY-MM-DD"
-                  className="form-control"
-                  required
-              />
-            </label>
+          <label>date_taken <span className="required">*</span>
+            <input
+              value={this.state.date_taken}
+              onChange={e => this.setState({ date_taken: e.target.value })}
+              type="text"
+              name="date_taken"
+              placeholder="YYYY-MM-DD"
+              className="form-control"
+              required
+            />
+          </label>
         </div>   
         <div class="form-group">
-            <button type="submit" id="submit" className="submit-button">Add New</button>
+          <button type="submit" id="submit" className="submit-button">Add New</button>
         </div> 
       </form>
     );
