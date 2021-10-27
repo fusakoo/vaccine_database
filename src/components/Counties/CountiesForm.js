@@ -22,6 +22,7 @@ function Validate(county_fips_code, state) {
 
   return errors;
 }
+
 class CountiesForm extends React.Component {
 
   constructor() {

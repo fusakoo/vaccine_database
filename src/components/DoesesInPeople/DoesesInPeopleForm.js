@@ -10,6 +10,7 @@ function Validate(id) {
 
   return errors;
 }
+
 class DoesesInPeopleForm extends React.Component {
 
   constructor() {

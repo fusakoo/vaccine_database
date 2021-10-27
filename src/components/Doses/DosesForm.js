@@ -14,6 +14,7 @@ function Validate(id, date_taken) {
 
   return errors;
 }
+
 class DosesForm extends React.Component {
 
   constructor() {
