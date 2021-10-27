@@ -4,7 +4,7 @@ function Validate(site_id) {
 
   const errors = [];
 
-  if (site_id > -1) { 
+  if (site_id < 0) { 
     errors.push("Can't Have Negative {site_id}");
   }
 

@@ -4,11 +4,11 @@ function Validate(id, date_taken) {
 
   const errors = [];
 
-  if (id > -1) { 
+  if (id < 0) { 
     errors.push("Can't Have Negative {id}");
   }
 
-  if (!(/^\d{4}[\-](0?[1-9]|1[012])[\-](0?[1-9]|[12][0-9]|3[01])$/.test(date_taken.length))) {
+  if (!(/^\d{4}[\-](0?[1-9]|1[012])[\-](0?[1-9]|[12][0-9]|3[01])$/.test(date_taken))) {
     errors.push("Invalid Format For {date_taken}");
   }
 
