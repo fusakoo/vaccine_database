@@ -1,11 +1,15 @@
 import React from 'react';
 
-function Validate(birth_date) { 
+function Validate(birth_date, site_id) { 
 
   const errors = [];
 
   if (!(/^\d{4}[\-](0?[1-9]|1[012])[\-](0?[1-9]|[12][0-9]|3[01])$/.test(birth_date))) {
     errors.push("Invalid Format For {birth_date}");
+  }
+
+  if (site_id !== null && site_id < 0) {
+    errors.push("Can't Have Negative {site_id}");
   }
 
   return errors;
@@ -33,7 +37,7 @@ class PeopleForm extends React.Component {
 
     // DO SQL INSERT
 
-    const errors = Validate(birth_date);
+    const errors = Validate(birth_date, site_id);
     const hasErrors = errors.length > 0;
     if (hasErrors) { 
       this.setState({ errors });
