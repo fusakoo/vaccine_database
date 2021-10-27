@@ -137,6 +137,18 @@ form {
   box-shadow: 0 0 0 0.2rem rgba(82, 0, 214, 0.25);
 }
 
+.input-radio {
+  display: inline-block;
+  margin-right: 0.5rem;
+  margin-top: 10px;
+}
+
+.input-radio:hover{
+  outline: 0;
+  box-shadow: 0 0 0.1rem 0.2rem rgba(160, 105, 155, 0.25);
+  cursor: pointer;
+}
+
 button {
   display: block;
   position: relative;
