@@ -8,6 +8,14 @@ function Validate(county_fips_code, state) {
     errors.push("Can't Have Negative {county_fips_code}");
   }
 
+  else if (county_fips_code < 01001) { 
+    errors.push("Invalid {county_fips_code}");
+  }
+
+  else if (county_fips_code > 99999) { 
+    errors.push("Invalid {county_fips_code}");
+  }
+
   if (!(/[a-z]{2}/.test(state)) || state.length != 2) {
     errors.push("Invalid Format For {date_taken}");
   }
