@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Validate(site_id, date_taken) { 
+function Validate(id, date_taken) { 
 
   const errors = [];
 
-  if (site_id > -1) { 
-    errors.push("site_id must be non-negative");
+  if (id > -1) { 
+    errors.push("id must be non-negative");
   }
 
   if (!(/^\d{4}[\-](0?[1-9]|1[012])[\-](0?[1-9]|[12][0-9]|3[01])$/.test(date_taken.length))) {
@@ -14,7 +14,7 @@ function Validate(site_id, date_taken) {
 
   return errors;
 }
-class VAForm extends React.Component {
+class DosesForm extends React.Component {
 
   constructor() {
     super();
