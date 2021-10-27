@@ -11,7 +11,7 @@ function Validate(birth_date) {
   return errors;
 }
 
-class PeopleForm extends React.Component{
+class PeopleForm extends React.Component {
 
   constructor() {
     super();
@@ -40,7 +40,6 @@ class PeopleForm extends React.Component{
       return;
     }
 
-    // send the form...
   };
 
   // New entry/Update entry toggle 
