@@ -20,15 +20,19 @@ function Validate(site_id, postal_code, county_fips_code) {
     errors.push("Invalid {postal_code}");
   }
 
-  if (county_fips_code < 0) { 
-    errors.push("Can't Have Negative {county_fips_code}");
-  }
-
-  else if (county_fips_code < 1001) { 
+  if (county_fips_code !== null && isNaN(county_fips_code)) {
     errors.push("Invalid {county_fips_code}");
   }
 
-  else if (county_fips_code > 99999) { 
+  else if (county_fips_code !== null && county_fips_code < 0) { 
+    errors.push("Can't Have Negative {county_fips_code}");
+  }
+
+  else if (county_fips_code !== null && county_fips_code < 1001) { 
+    errors.push("Invalid {county_fips_code}");
+  }
+
+  else if (county_fips_code !== null && county_fips_code > 99999) { 
     errors.push("Invalid {county_fips_code}");
   }
 
@@ -45,7 +49,7 @@ class CSForm extends React.Component {
       street_address: "",
       city: "",
       postal_code: -1,
-      county_fips_code: -1,
+      county_fips_code: null,
       errors: []
     };
   }
@@ -149,10 +153,9 @@ class CSForm extends React.Component {
               name="county_fips_code"
               placeholder="County FIPS code"
               className="form-control"
-              required
             />
           </label>
-            <p><span className="optional">See <a href="https://www.census.gov/prod/techdoc/cbp/cbp95/st-cnty.pdf">list of FIPS codes</a> for reference</span></p>
+          <p className="shrink"><span className="optional">See <a href="https://www.census.gov/prod/techdoc/cbp/cbp95/st-cnty.pdf">list of FIPS codes</a> for reference</span></p>
         </div>   
         <div class="form-group">
           <button type="submit" id="submit" className="submit-button">Add New</button>

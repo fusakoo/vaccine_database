@@ -17,7 +17,7 @@ function Validate(county_fips_code, state) {
   }
 
   if (!(/[a-z]{2}/.test(state)) || state.length != 2) {
-    errors.push("Invalid Format For {date_taken}");
+    errors.push("Invalid Format For {state}");
   }
 
   return errors;
@@ -72,6 +72,7 @@ class CountiesForm extends React.Component {
               required
             />
           </label>
+          <p className="shrink"><span className="optional">See <a href="https://www.census.gov/prod/techdoc/cbp/cbp95/st-cnty.pdf">list of FIPS codes</a> for reference</span></p>
         </div>
         <div class="form-group">
           <label>county_name <span className="required">*</span>
