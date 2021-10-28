@@ -48,6 +48,20 @@
   bottom: 0px;
 }
 
+.fade {
+  animation: fadeIn ease 4s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    color: white;
+  }
+  100% {
+    opacity: 1;
+    color: black;
+  }
+}
 
 /* Table CSS */
 
@@ -152,7 +166,7 @@ form {
 button {
   display: block;
   position: relative;
-  width: 10%;
+  width: 15%;
   padding: 0.4rem;
   background: var(--accent-color);
   color: #fff;

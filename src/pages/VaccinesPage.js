@@ -8,7 +8,7 @@ function VaccinesPage({ vaccines }) {
         <>
             <Navigation/>
             <h1>Vaccines</h1>
-            <p>This page shows the details of covid-19 vaccines on record.</p>
+            <p>This page shows the details of Covid-19 vaccines on record.</p>
             <VaccinesTable vaccines={vaccines}></VaccinesTable>
             <VaccinesForm/>
         </>

@@ -10,7 +10,7 @@ function CountiesPage( { counties }) {
         <>
             <Navigation/>
             <h1>Counties</h1>
-            <p>This page shows the counties where people resides and sites are located in.</p>
+            <p>This page shows the counties where people reside and clinic sites are located in.</p>
             <CountiesTable counties={counties}></CountiesTable>
             <CountiesForm/>
             <ClinicSitesInCountiesTable></ClinicSitesInCountiesTable>
