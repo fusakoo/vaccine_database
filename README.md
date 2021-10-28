@@ -14,6 +14,6 @@ Vaccine database website backed by mariadb created by fusakoo and exleyt.
 Citation for the following function:
 
 Navigation.js
-// Date: 10/22/2021 
-// Adapted from:
-// Source URL: https://www.w3schools.com/howto/howto_js_topnav.asp
+* Date: 10/22/2021 
+* Adapted from:
+* Source URL: https://www.w3schools.com/howto/howto_js_topnav.asp
