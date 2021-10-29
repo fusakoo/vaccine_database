@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Validate(birth_date, site_id, id) { 
+function ValidateAdd(birth_date, site_id) { 
 
   const errors = [];
 
@@ -12,8 +12,19 @@ function Validate(birth_date, site_id, id) {
     errors.push("Can't Have Negative Or Zero {site_id}");
   }
 
-  if (id !== null && id < 1) {
+  return errors;
+}
+
+function ValidateUpdate(site_id, id) { 
+
+  const errors = [];
+
+  if (id < 1) {
     errors.push("Can't Have Negative Or Zero {id}");
+  }
+
+  if (site_id !== null && site_id < 1) {
+    errors.push("Can't Have Negative Or Zero {site_id}");
   }
 
   return errors;
@@ -27,7 +38,7 @@ class PeopleForm extends React.Component {
       id: null,
       last_name: "",
       first_name: "",
-      birth_date: null,   // Set to null temporarily for the two forms to work
+      birth_date: "",
       site_id: null,
       errors: [],
       status: 0
@@ -37,17 +48,30 @@ class PeopleForm extends React.Component {
   HandleSubmit = (e) => {
     e.preventDefault();
 
-    const { id, last_name, first_name, birth_date, site_id } = this.state;
+    const { id, last_name, first_name, birth_date, site_id, err, status } = this.state;
 
-    // DO SQL INSERT
-    // different 
+    if (status == 1) { // Udpate
 
-    const errors = Validate(birth_date, site_id, id);
-    const hasErrors = errors.length > 0;
-    if (hasErrors) { 
-      this.setState({ errors });
-      return;
+      const errors = ValidateUpdate(id, site_id);
+      const hasErrors = errors.length > 0;
+      if (hasErrors) { 
+        this.setState({ errors });
+        return;
+      }
+
+      // SQL
     }
+    else { // Add
+
+      const errors = ValidateAdd(birth_date, site_id);
+      const hasErrors = errors.length > 0;
+      if (hasErrors) { 
+        this.setState({ errors });
+        return;
+      }
+
+      // SQL
+    }    
 
   };
 
