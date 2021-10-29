@@ -4,8 +4,8 @@ function Validate(id) {
 
   const errors = [];
 
-  if (id < 0) { 
-    errors.push("Can't Have Negative {id}");
+  if (id < 1) { 
+    errors.push("Can't Have Negative Or Zero {id}");
   }
 
   return errors;

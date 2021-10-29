@@ -8,12 +8,12 @@ function Validate(birth_date, site_id, id) {
     errors.push("Invalid Format For {birth_date}");
   }
 
-  if (site_id !== null && site_id < 0) {
-    errors.push("Can't Have Negative {site_id}");
+  if (site_id !== null && site_id < 1) {
+    errors.push("Can't Have Negative Or Zero {site_id}");
   }
 
-  if (id !== null && id < 0) {
-    errors.push("Can't Have Negative {id}");
+  if (id !== null && id < 1) {
+    errors.push("Can't Have Negative Or Zero {id}");
   }
 
   return errors;
@@ -40,6 +40,7 @@ class PeopleForm extends React.Component {
     const { id, last_name, first_name, birth_date, site_id } = this.state;
 
     // DO SQL INSERT
+    // different 
 
     const errors = Validate(birth_date, site_id, id);
     const hasErrors = errors.length > 0;

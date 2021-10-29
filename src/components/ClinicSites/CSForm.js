@@ -4,8 +4,8 @@ function Validate(site_id, postal_code, county_fips_code) {
 
   const errors = [];
 
-  if (site_id < 0) { 
-    errors.push("Can't Have Negative {site_id}");
+  if (site_id < 1) { 
+    errors.push("Can't Have Negative Or Zero {site_id}");
   }
 
   if (postal_code < 0) { 
