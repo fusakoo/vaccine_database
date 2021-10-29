@@ -24,8 +24,6 @@ class VaccinesForm extends React.Component {
 
     const { research_name, manufacturer, vaccine_type } = this.state;
 
-    // DO SQL INSERT
-
     const errors = Validate();
     const hasErrors = errors.length > 0;
     if (hasErrors) { 
@@ -33,6 +31,7 @@ class VaccinesForm extends React.Component {
       return;
     }
 
+        // SQL
   };
 
   render() {

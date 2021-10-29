@@ -44,11 +44,11 @@ class CSForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      site_id: -1,
+      site_id: null,
       site_name: "",
       street_address: "",
       city: "",
-      postal_code: -1,
+      postal_code: null,
       county_fips_code: null,
       errors: []
     };
@@ -59,8 +59,6 @@ class CSForm extends React.Component {
 
     const { site_id, site_name, street_address, city, postal_code, county_fips_code } = this.state;
 
-    // DO SQL INSERT
-
     const errors = Validate(site_id, postal_code, county_fips_code);
     const hasErrors = errors.length > 0;
     if (hasErrors) { 
@@ -68,6 +66,7 @@ class CSForm extends React.Component {
       return;
     }
 
+    // SQL
   };
 
   render() {

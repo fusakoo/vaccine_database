@@ -20,7 +20,7 @@ class DosesForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      id: -1,
+      id: null,
       research_name: "",
       date_taken: "",
       errors: []
@@ -32,8 +32,6 @@ class DosesForm extends React.Component {
 
     const { id, research_name, date_taken } = this.state;
 
-    // DO SQL INSERT
-
     const errors = Validate(id, date_taken);
     const hasErrors = errors.length > 0;
     if (hasErrors) { 
@@ -41,6 +39,7 @@ class DosesForm extends React.Component {
       return;
     }
 
+    // SQL
   };
 
   render() {

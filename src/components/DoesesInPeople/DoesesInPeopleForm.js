@@ -16,7 +16,7 @@ class DoesesInPeopleForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      id: -1,
+      id: null,
       errors: []
     };
   }
@@ -26,8 +26,6 @@ class DoesesInPeopleForm extends React.Component {
 
     const { id } = this.state;
 
-    // DO SQL INSERT
-
     const errors = Validate(id);
     const hasErrors = errors.length > 0;
     if (hasErrors) { 
@@ -35,6 +33,7 @@ class DoesesInPeopleForm extends React.Component {
       return;
     }
 
+    // SQL
   };
 
   render() {

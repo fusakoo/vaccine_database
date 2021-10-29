@@ -16,7 +16,7 @@ class VaccinesInClinicSitesForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      site_id: -1,
+      site_id: null,
       errors: []
     };
   }
@@ -25,9 +25,7 @@ class VaccinesInClinicSitesForm extends React.Component {
     e.preventDefault();
 
     const { site_id } = this.state;
-
-    // DO SQL INSERT
-
+    
     const errors = Validate(site_id);
     const hasErrors = errors.length > 0;
     if (hasErrors) { 
@@ -35,6 +33,7 @@ class VaccinesInClinicSitesForm extends React.Component {
       return;
     }
 
+    // SQL
   };
 
   render() {

@@ -24,7 +24,7 @@ class ClinicSitesInCountiesForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      county_fips_code: -1,
+      county_fips_code: null,
       errors: []
     };
   }
@@ -34,8 +34,6 @@ class ClinicSitesInCountiesForm extends React.Component {
 
     const { county_fips_code } = this.state;
 
-    // DO SQL INSERT
-
     const errors = Validate(county_fips_code);
     const hasErrors = errors.length > 0;
     if (hasErrors) { 
@@ -43,6 +41,7 @@ class ClinicSitesInCountiesForm extends React.Component {
       return;
     }
 
+    // SQL
   };
 
   render() {

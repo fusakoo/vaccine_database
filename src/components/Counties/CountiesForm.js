@@ -28,7 +28,7 @@ class CountiesForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      county_fips_code: -1,
+      county_fips_code: null,
       county_name: "",
       state: "",
       errors: []
@@ -40,8 +40,6 @@ class CountiesForm extends React.Component {
 
     const { county_fips_code, county_name, state } = this.state;
 
-    // DO SQL INSERT
-
     const errors = Validate(county_fips_code, state);
     const hasErrors = errors.length > 0;
     if (hasErrors) { 
@@ -49,6 +47,7 @@ class CountiesForm extends React.Component {
       return;
     }
 
+    // SQL
   };
 
   render() {
