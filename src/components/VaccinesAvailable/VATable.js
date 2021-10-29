@@ -4,7 +4,7 @@ import VaccineAvailable from './VaccineAvailable'
 function VATable({ vaccinesAvailable }) {
   return (
       <table className="table-container">
-          <caption>Vaccine(s) Available At Clinic Sites</caption>
+          <caption>Vaccine(s) Available at Clinic Sites</caption>
           <thead>
             <tr>
               <th>site_id</th>

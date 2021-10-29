@@ -7,9 +7,9 @@ function HomePage() {
         <>
             <Navigation/>
             <h1>US COVID-19 Vaccine Database</h1>
-            <p>Welcome to the US COVID-19 Vaccine Database.</p>
+            <p className="fade">&#127973; Welcome to the US COVID-19 Vaccine Database.</p>
             <footer>
-                <p>&copy; Designed by Trevyn Exley and Fusako Obata for CS340</p>
+                <p>&copy; 2021 Designed by Trevyn Exley and Fusako Obata for CS340</p>
             </footer>
         </>
     );

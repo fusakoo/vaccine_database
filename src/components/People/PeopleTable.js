@@ -12,7 +12,6 @@ function PeopleTable({ people }) {
               <th>first_name</th> 
               <th>birth_date</th>
               <th>site_id</th>
-              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
