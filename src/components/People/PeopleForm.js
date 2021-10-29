@@ -50,7 +50,7 @@ class PeopleForm extends React.Component {
 
     const { id, last_name, first_name, birth_date, site_id, err, status } = this.state;
 
-    if (status == 1) { // Udpate
+    if (status == 1) { // Update
 
       const errors = ValidateUpdate(id, site_id);
       const hasErrors = errors.length > 0;
