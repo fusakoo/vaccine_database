@@ -70,7 +70,7 @@ class VaccinesForm extends React.Component {
           </label>
         </div>
         <div class="form-group">
-          <label>manufacturer <span className="required">*</span>
+          <label>vaccine_type <span className="required">*</span>
             <input
               value={this.state.vaccine_type}
               onChange={e => this.setState({ vaccine_type: e.target.value })}
