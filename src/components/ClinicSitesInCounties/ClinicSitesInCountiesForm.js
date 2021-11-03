@@ -55,15 +55,19 @@ class ClinicSitesInCountiesForm extends React.Component {
         <p><span className="required">* </span><span className="optional">Is required</span></p>
         <div class="form-group">
           <label>county_fips_code <span className="required">*</span>
-            <input
+            <select
               value={this.state.county_fips_code}
               onChange={e => this.setState({ county_fips_code: e.target.value })}
               type="number"
               name="county_fips_code"
               placeholder="County FIPS code"
-              className="form-control"
+              className="form-control-select"
               required
-            />
+            >
+              <option value="06001">06001</option>
+              <option value="08041">08041</option>
+              <option value="12345">12345</option>
+            </select>
           </label>
         </div>
         <div class="form-group">
