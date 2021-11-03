@@ -135,7 +135,7 @@ form {
 .form-control {
   display: block;
   width: 80%;
-  height: 1.5em;
+  height: 1.75em;
   padding: 0.375em 0.75em;
   color: #5e6079;
   background-color: #fff;
@@ -149,6 +149,19 @@ form {
   border-color: var(--sub-color);
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(82, 0, 214, 0.25);
+}
+
+.form-control-select {
+  display: block;
+  width: 80%;
+  height: 2.75em;
+  padding: 0.5em 0.75em;
+  color: #5e6079;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 2px solid #65699b;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .input-radio {
