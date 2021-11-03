@@ -9,7 +9,7 @@ function CSTable({ clinicSites }) {
             <tr>
               <th>site_id</th>
               <th>site_name</th> 
-              <th>streed_address</th>
+              <th>street_address</th>
               <th>city</th>
               <th>postal_code</th>
               <th>county_fips_code</th>
