@@ -1,12 +1,8 @@
 import React from 'react';
 
-function Validate(site_id, postal_code, county_fips_code) { 
+function Validate(postal_code, county_fips_code) { 
 
   const errors = [];
-
-  if (site_id < 1) { 
-    errors.push("Can't Have Negative Or Zero {site_id}");
-  }
 
   if (postal_code < 0) { 
     errors.push("Can't Have Negative {postal_code}");
@@ -44,7 +40,6 @@ class CSForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      site_id: null,
       site_name: "",
       street_address: "",
       city: "",
@@ -57,9 +52,9 @@ class CSForm extends React.Component {
   HandleSubmit = (e) => {
     e.preventDefault();
 
-    const { site_id, site_name, street_address, city, postal_code, county_fips_code } = this.state;
+    const { site_name, street_address, city, postal_code, county_fips_code } = this.state;
 
-    const errors = Validate(site_id, postal_code, county_fips_code);
+    const errors = Validate(postal_code, county_fips_code);
     const hasErrors = errors.length > 0;
     if (hasErrors) { 
       this.setState({ errors });
@@ -78,19 +73,6 @@ class CSForm extends React.Component {
           <p key={error}>Error: {error}</p>
         ))}
         <p><span className="required">* </span><span className="optional">Is required</span></p>
-        <div class="form-group">
-          <label>site_id <span className="required">*</span>
-            <input
-              value={this.state.site_id}
-              onChange={e => this.setState({ site_id: e.target.value })}
-              type="number"
-              name="site_id"
-              placeholder="Clinic site ID"
-              className="form-control"
-              required
-            />
-          </label>
-        </div>
         <div class="form-group">
           <label>site_name <span className="required">*</span>
             <input
