@@ -1,5 +1,5 @@
 import React from 'react';
-import Navigation from './../components/Navigation'
+import Navigation from '../components/Navigation'
 import VAForm from '../components/VaccinesAvailable/VAForm'
 import VATable from '../components/VaccinesAvailable/VATable'
 import CSTable from '../components/ClinicSites/CSTable'
