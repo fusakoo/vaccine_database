@@ -45,6 +45,8 @@ class VaccinesForm extends React.Component {
     .then(data => {
       alert("Successfully added a new vaccine.");
     })
+    .catch( alert("Something went wrong."));
+    // There's a weird bug sometimes that it shows 2 alerts to pop up
   };
 
   render() {
