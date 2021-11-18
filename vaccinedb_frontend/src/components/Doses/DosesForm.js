@@ -39,7 +39,23 @@ class DosesForm extends React.Component {
       return;
     }
 
-    // SQL
+    fetch('http://flip3.engr.oregonstate.edu:49490/Doses', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id:id, 
+        research_name:research_name, 
+        date_taken:date_taken
+      })
+      }).then(response => response.json())
+      .then(data => {
+        alert("Successfully added a new dose.");
+      })
+      .catch(error => {
+        alert(error);
+      });
   };
 
   render() {

@@ -61,7 +61,25 @@ class CSForm extends React.Component {
       return;
     }
 
-    // SQL
+    fetch('http://flip3.engr.oregonstate.edu:49490/Clinic_Sites', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        site_name:site_name, 
+        street_address:street_address, 
+        city:city,
+        postal_code:postal_code,
+        county_fips_code:county_fips_code
+      })
+      }).then(response => response.json())
+      .then(data => {
+        alert("Successfully added a new clinic site.");
+      })
+      .catch(error => {
+        alert(error);
+      });
   };
 
   render() {

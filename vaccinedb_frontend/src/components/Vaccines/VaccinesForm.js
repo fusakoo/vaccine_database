@@ -31,7 +31,7 @@ class VaccinesForm extends React.Component {
       return;
     }
 
-    fetch('http://localhost:8080/Vaccines', {
+    fetch('http://flip3.engr.oregonstate.edu:49490/Vaccines', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -45,8 +45,9 @@ class VaccinesForm extends React.Component {
     .then(data => {
       alert("Successfully added a new vaccine.");
     })
-    .catch( alert("Something went wrong."));
-    // There's a weird bug sometimes that it shows 2 alerts to pop up
+    .catch(error => {
+      alert(error);
+    });
   };
 
   render() {

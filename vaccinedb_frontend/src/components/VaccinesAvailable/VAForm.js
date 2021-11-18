@@ -34,7 +34,22 @@ class VAForm extends React.Component {
       return;
     }
 
-    // SQL
+    fetch('http://flip3.engr.oregonstate.edu:49490/Vaccines_Available', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        site_id:site_id, 
+        research_name:research_name
+      })
+      }).then(response => response.json())
+      .then(data => {
+        alert("Successfully added a new vaccine availability.");
+      })
+      .catch(error => {
+        alert(error);
+      });
   };
 
   render() {

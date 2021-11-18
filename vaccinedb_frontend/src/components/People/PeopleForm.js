@@ -70,9 +70,25 @@ class PeopleForm extends React.Component {
         return;
       }
 
-      // SQL
-    }    
-
+      fetch('http://flip3.engr.oregonstate.edu:49490/People', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        last_name:last_name, 
+        first_name:first_name, 
+        birth_date:birth_date, 
+        site_id:site_id
+      })
+      }).then(response => response.json())
+      .then(data => {
+        alert("Successfully added a new person.");
+      })
+      .catch(error => {
+        alert(error);
+      });
+    }
   };
 
   // New entry/Update entry toggle 

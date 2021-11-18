@@ -16,7 +16,7 @@ function Validate(county_fips_code, state) {
     errors.push("Invalid {county_fips_code}");
   }
 
-  if (!(/[a-z]{2}/.test(state)) || state.length != 2) {
+  if (!(/[A-Z]{2}/.test(state)) || state.length != 2) {
     errors.push("Invalid Format For {state}");
   }
 
@@ -47,7 +47,23 @@ class CountiesForm extends React.Component {
       return;
     }
 
-    // SQL
+    fetch('http://flip3.engr.oregonstate.edu:49490/Counties', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        county_fips_code:county_fips_code, 
+        county_name:county_name, 
+        state:state
+      })
+      }).then(response => response.json())
+      .then(data => {
+        alert("Successfully added a new county.");
+      })
+      .catch(error => {
+        alert(error);
+      });
   };
 
   render() {
