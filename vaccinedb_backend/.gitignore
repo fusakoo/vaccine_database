@@ -23,4 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # local
-/app/config
+/app/config/dbconfig.js
