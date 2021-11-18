@@ -31,7 +31,20 @@ class VaccinesForm extends React.Component {
       return;
     }
 
-        // SQL
+    fetch('http://localhost:8080/Vaccines', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        research_name:research_name,
+        manufacturer:manufacturer,
+        vaccine_type:vaccine_type
+      })
+    }).then(response => response.json())
+    .then(data => {
+      alert("Successfully added a new vaccine.");
+    })
   };
 
   render() {

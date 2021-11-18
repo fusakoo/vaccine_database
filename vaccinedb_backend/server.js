@@ -5,7 +5,7 @@ const app = express();
 
 // Need to update this 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:3000"
 };
 
 app.use(cors(corsOptions));
@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to test application." });
 });
 
-require("./app/routes/vaccines_route.js")(app);
+require("./app/routes/VaccinesRoute.js")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

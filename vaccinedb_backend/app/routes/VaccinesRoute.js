@@ -1,12 +1,12 @@
 module.exports = app => {
-  const vaccines = require("../controllers/vaccines_controller.js");
+  const vaccines = require("../controllers/VaccinesController.js");
 
   var router = require("express").Router();
 
-  // Create a new Tutorial
+  // Create a new Vaccine
   router.post("/", vaccines.create);  
 
-  // Create a new Tutorial
+  // Get all Vaccines
   router.get("/", vaccines.getAll);
 
   app.use('/Vaccines', router);
