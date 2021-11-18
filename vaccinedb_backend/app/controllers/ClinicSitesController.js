@@ -12,7 +12,7 @@ exports.create = (req, res) => {
   // Create a new Clinic Site
   const clinicSite = new ClinicSites({
     site_name: req.body.site_name,
-    street_name: req.body.street_name,
+    street_address: req.body.street_address,
     city: req.body.city,
     postal_code: req.body.postal_code,
     county_fips_code: req.body.county_fips_code || false

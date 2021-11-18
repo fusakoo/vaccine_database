@@ -2,8 +2,8 @@ const sql = require("./db.js");
 
 // constructor
 const People = function(people) {
-  this.last_name = people.site_id;
-  this.first_name = people.research_name;
+  this.last_name = people.last_name;
+  this.first_name = people.first_name;
   this.birth_date = people.birth_date;
   this.site_id = people.site_id;
 };

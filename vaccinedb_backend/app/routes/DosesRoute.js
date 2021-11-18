@@ -9,5 +9,5 @@ module.exports = app => {
   // Get all the Doses
   router.get("/", doses.getAll);
 
-  app.use('/People', router);
+  app.use('/Doses', router);
 };

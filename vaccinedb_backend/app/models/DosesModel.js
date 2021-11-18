@@ -2,7 +2,8 @@ const sql = require("./db.js");
 
 // constructor
 const Doses = function(dose) {
-  this.research_date = dose.research_date;
+  this.id = dose.id;
+  this.research_name = dose.research_name;
   this.date_taken = dose.date_taken;
 };
 
@@ -14,8 +15,8 @@ Doses.create = (newDose, result) => {
       return;
     }
 
-    console.log("Created a dose entry: ", { id: res.insertId, ...newDose });
-    result(null, { id: res.insertId, ...newPerson });
+    console.log("Created a dose entry: ", { ...newDose });
+    result(null, { ...newDose });
   });
 };
 
