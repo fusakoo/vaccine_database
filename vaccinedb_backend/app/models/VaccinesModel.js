@@ -15,7 +15,7 @@ Vaccines.create = (newVaccine, result) => {
       return;
     }
 
-    console.log("created vaccine: ", { id: res.insertId, ...newVaccine });
+    console.log("Created a vaccine entry: ", { id: res.insertId, ...newVaccine });
     result(null, { id: res.insertId, ...newVaccine });
   });
 };

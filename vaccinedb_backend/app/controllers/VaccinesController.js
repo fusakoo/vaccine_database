@@ -33,7 +33,7 @@ exports.getAll = (req, res) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving vaccines."
+          err.message || "Some error occurred while retrieving Vaccines."
       });
     else res.send(data);
   });

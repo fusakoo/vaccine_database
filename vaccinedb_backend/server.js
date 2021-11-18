@@ -21,7 +21,12 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to test application." });
 });
 
+require("./app/routes/ClinicSitesRoute.js")(app);
+require("./app/routes/CountiesRoute.js")(app);
+require("./app/routes/DosesRoute.js")(app);
+require("./app/routes/PeopleRoute.js")(app);
 require("./app/routes/VaccinesRoute.js")(app);
+require("./app/routes/VARoute.js")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
