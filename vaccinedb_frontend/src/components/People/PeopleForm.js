@@ -1,4 +1,5 @@
 import React from 'react';
+const pathConfig = require("../config/pathconfig.js");
 
 function ValidateAdd(birth_date, site_id) { 
 
@@ -70,7 +71,7 @@ class PeopleForm extends React.Component {
         return;
       }
 
-      fetch('http://flip3.engr.oregonstate.edu:49490/People', {
+      fetch( pathConfig.URL + '/People' , {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

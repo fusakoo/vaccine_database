@@ -1,4 +1,5 @@
 import React from 'react';
+const pathConfig = require("../config/pathconfig.js");
 
 function Validate(postal_code, county_fips_code) { 
 
@@ -61,7 +62,7 @@ class CSForm extends React.Component {
       return;
     }
 
-    fetch('http://flip3.engr.oregonstate.edu:49490/Clinic_Sites', {
+    fetch( pathConfig.URL + '/Clinic_Sites' , {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

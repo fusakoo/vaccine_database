@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
+const pathConfig = require("../config/pathconfig.js");
 
 function DosesTable() {
 
   useEffect ( () => {
-    fetch('http://flip3.engr.oregonstate.edu:49490/Doses', {
+    fetch( pathConfig.URL + '/Doses' , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

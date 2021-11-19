@@ -1,4 +1,5 @@
 import React from 'react';
+const pathConfig = require("../config/pathconfig.js");
 
 function Validate(id, date_taken) { 
 
@@ -39,7 +40,7 @@ class DosesForm extends React.Component {
       return;
     }
 
-    fetch('http://flip3.engr.oregonstate.edu:49490/Doses', {
+    fetch( pathConfig.URL + '/Doses' , {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
