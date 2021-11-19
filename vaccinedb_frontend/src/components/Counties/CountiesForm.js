@@ -104,7 +104,7 @@ class CountiesForm extends React.Component {
           </label>
         </div>
         <div class="form-group">
-          <label>state <span className="optional">(Optional)</span>
+          <label>state <span className="required">*</span>
             <input
               value={this.state.state}
               onChange={e => this.setState({ state: e.target.value })}

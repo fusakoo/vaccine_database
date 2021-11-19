@@ -145,7 +145,7 @@ class CSForm extends React.Component {
           </label>
         </div>   
         <div class="form-group">
-          <label>county_fips_code <span className="optional">(Optional)</span>
+          <label>county_fips_code <span className="required">*</span>
             <input
               value={this.state.county_fips_code}
               onChange={e => this.setState({ county_fips_code: e.target.value })}
