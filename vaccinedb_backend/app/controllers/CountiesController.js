@@ -13,7 +13,7 @@ exports.create = (req, res) => {
   const county = new Counties({
     county_fips_code: req.body.county_fips_code,
     county_name: req.body.county_name,
-    state: req.body.state || false
+    state: req.body.state
   });
 
   // Save the newly created County in the database (Counties)

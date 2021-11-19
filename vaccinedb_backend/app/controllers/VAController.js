@@ -12,7 +12,7 @@ exports.create = (req, res) => {
   // Create a new Vaccine Available entry
   const vaccineAvailable = new VaccinesAvailable({
     site_id: req.body.site_id,
-    research_name: req.body.research_name || false
+    research_name: req.body.research_name
   });
 
   // Save the newly created Vaccine in the database

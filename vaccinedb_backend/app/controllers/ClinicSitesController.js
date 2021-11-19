@@ -15,7 +15,7 @@ exports.create = (req, res) => {
     street_address: req.body.street_address,
     city: req.body.city,
     postal_code: req.body.postal_code,
-    county_fips_code: req.body.county_fips_code || false
+    county_fips_code: req.body.county_fips_code
   });
 
   // Save the newly created Clinic Site in the database (Clinic Sites)

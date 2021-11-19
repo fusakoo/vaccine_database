@@ -14,7 +14,7 @@ exports.create = (req, res) => {
     last_name: req.body.last_name,
     first_name: req.body.first_name,
     birth_date: req.body.birth_date,
-    site_id: req.body.site_id || false
+    site_id: req.body.site_id || null
   });
 
   // Save the newly created Person in the database (People)

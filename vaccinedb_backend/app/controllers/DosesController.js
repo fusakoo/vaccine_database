@@ -13,7 +13,7 @@ exports.create = (req, res) => {
   const dose = new Doses({
     id: req.body.id,
     research_name: req.body.research_name,
-    date_taken: req.body.date_taken || false
+    date_taken: req.body.date_taken
   });
 
   // Save the newly created Dose in the database (Doses)
