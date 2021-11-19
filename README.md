@@ -1,10 +1,12 @@
 # vaccine_database
 Vaccine database website backed by mariadb created by fusakoo and exleyt.
+- vaccinedb_backend: created with nodejs, express, mysql, cors
+- vaccinedb_frontend: created with react
 
 ## How to run locally
 1. Git clone this repository
-2. Run `npm install` to install all the dependent packages
-3. Run `npm start`
+2. Run `npm install` to install all the dependent packages in both directories (vaccinedb_backend and vaccinedb_frontend)
+3. Run `npm start` in both directories (vaccinedb_backend and vaccinedb_frontend) 
 
 ## Citations
 Citation for the following function:
