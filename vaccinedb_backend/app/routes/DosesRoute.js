@@ -9,5 +9,8 @@ module.exports = app => {
   // Get all the Doses
   router.get("/", doses.getAll);
 
+  // Delete a specific dose
+  router.delete("/:id", doses.remove);
+
   app.use('/Doses', router);
 };

@@ -33,4 +33,23 @@ Doses.getAll = result => {
     });
   };
 
-  module.exports = Doses;
+Doses.remove = (id, result) => {
+  sql.query("DELETE FROM Doses WHERE id = ?", id, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    // if (res.affectedRows == 0) {
+    //   // not found Person with the id
+    //   result({ kind: "not_found" }, null);
+    //   return;
+    // }
+
+    console.log("Deleted dose with id: ", id);
+    result(null, res);
+  });
+};  
+
+module.exports = Doses;

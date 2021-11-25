@@ -17,7 +17,10 @@ function DosesTable() {
         HTML += "<tr className=\"list-item\"><td>" 
         + json[row].id + "</td><td>" 
         + json[row].research_name + "</td><td>" 
-        + json[row].date_taken + "</td></tr>";
+        + json[row].date_taken + "</td>"
+        // Still need to implement how to connect this to the backend
+        + "<td class='selector-button'><button type='submit' id='submit' class='delete-button'>X</button></td>"
+        + "</tr>";
       document.getElementById("DoseBody").innerHTML = HTML;
     })
     .catch(error => {
