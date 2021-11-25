@@ -49,6 +49,8 @@ class PeopleForm extends React.Component {
   HandleSubmit = (e) => {
     e.preventDefault();
 
+    if (this.state.site_id == "") this.setState({ site_id: null })
+
     const { id, last_name, first_name, birth_date, site_id, err, status } = this.state;
 
     if (status == 1) { // Update
@@ -60,7 +62,24 @@ class PeopleForm extends React.Component {
         return;
       }
 
-      // SQL
+      fetch( pathConfig.URL + '/People', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id:id,
+          last_name:last_name, 
+          first_name:first_name, 
+          site_id:site_id
+        })
+      }).then(response => response.json())
+      .then(data => {
+        alert("Successfully updated an existing person.");
+      })
+      .catch(error => {
+        alert(error);
+      });
     }
     else { // Add
 

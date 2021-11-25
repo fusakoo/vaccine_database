@@ -11,6 +11,7 @@ exports.create = (req, res) => {
 
   // Create a new Person
   const person = new People({
+    id: req.body.id || null,
     last_name: req.body.last_name,
     first_name: req.body.first_name,
     birth_date: req.body.birth_date,
@@ -39,4 +40,33 @@ exports.getAll = (req, res) => {
     else res.send(data);
   });
 };
+
+// Updates an existing Person
+exports.update = (req, res) => {
+  // Validate request
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+
+  const person = new People({
+    id: req.body.id,
+    last_name: req.body.last_name,
+    first_name: req.body.first_name,
+    birth_date: req.body.birth_date || null,
+    site_id: req.body.site_id || null
+  });
+
+  // Updates an existing Person in the database
+  People.update(person, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while updating an existing Person."
+      });
+    else res.send(data);
+  });
+};
+
 
