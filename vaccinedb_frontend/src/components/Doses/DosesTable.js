@@ -1,9 +1,54 @@
-import React, {useEffect} from 'react';
+import React from 'react';
+import { useAsync } from "react-async";
 const pathConfig = require("../config/pathconfig.js");
 
-function DosesTable() {
+let loadTableData = async () => {
+  const doses = await 
+  console.log(doses.length);
+  return doses;
+}
 
-  useEffect ( () => {
+function RenderTableData() {
+  let doses = useAsync({ promiseFn: loadTableData});
+  return doses.map(dose => {
+    const {id, research_name, date_taken} = dose;
+    return ( 
+      <tr className="list-item">
+        <td>{id}</td>
+        <td>{research_name}</td>
+        <td>{date_taken}</td>
+      </tr>
+    );
+  });
+}
+
+class DosesTable extends React.Component {
+  constructor() {
+    super();
+    this.state = { doses: [] };
+  }
+
+  HandleDelete = (id,research_name,date_taken) => {
+    fetch( pathConfig.URL + '/Doses' , {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: id, 
+        research_name: research_name, 
+        date_taken: date_taken
+      })
+    }).then(response => response.text())
+    .then(data => {
+      // REMOVE FROM TABLE I GUESS
+    })
+    .catch(error => {
+      alert(error);
+    });
+  }
+
+  componentDidMount() {
     fetch( pathConfig.URL + '/Doses' , {
       method: 'GET',
       headers: {
@@ -12,37 +57,46 @@ function DosesTable() {
     }).then(response => response.text())
     .then(data => {
       var json = JSON.parse(data);
-      var HTML = "";
-      for (var row in json)
-        HTML += "<tr className=\"list-item\"><td>" 
-        + json[row].id + "</td><td>" 
-        + json[row].research_name + "</td><td>" 
-        + json[row].date_taken + "</td>"
-        // Still need to implement how to connect this to the backend
-        + "<td class='selector-button'><button type='submit' id='submit' class='delete-button'>X</button></td>"
-        + "</tr>";
-      document.getElementById("DoseBody").innerHTML = HTML;
+      let doses = [];
+      for (var row in json) {
+        var dictionary = { id: json[row].id, research_name: json[row].research_name, date_taken: json[row].date_taken };
+        doses.push(dictionary);
+      }
+      this.setState({doses: doses});
     })
     .catch(error => {
       alert(error);
     });
-  })
+  }
 
-  return (
-    <table className="table-container">
-      <caption>Dose(s) Taken by People</caption>
-      <thead>
-        <tr>
-          <th>id</th>
-          <th>research_name</th> 
-          <th>date_taken</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-      <tbody id='DoseBody'>
-      </tbody>
-    </table>
-  );
+  render () {
+    return (    
+      <table className="table-container">
+        <caption>Dose(s) Taken by People</caption>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>research_name</th> 
+            <th>date_taken</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.state.doses.map(dose => {
+            const {id, research_name, date_taken} = dose;
+            return ( 
+              <tr className="list-item">
+                <td>{id}</td>
+                <td>{research_name}</td>
+                <td>{date_taken}</td>
+                <td class='selector-button'><button onClick={() => this.HandleDelete(id,research_name,date_taken)} class='delete-button'>X</button></td>
+              </tr>
+            )}
+          )}
+        </tbody>
+      </table>
+    );
+  }
 }
 
 export default DosesTable;
