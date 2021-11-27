@@ -41,7 +41,7 @@ Doses.remove = (doseInfo, result) => {
       return;
     }
 
-    console.log("Deleted dose with id: ", doseInfo.id);
+    console.log("Deleted dose with id: ", doseInfo.id, ", research_name: ", doseInfo.research_name, ", date_taken: ", doseInfo.date_taken);
     result(null, res);
   });
 };  
