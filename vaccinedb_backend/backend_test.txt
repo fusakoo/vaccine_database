@@ -6,11 +6,12 @@ curl -d 'last_name=He&first_name=Man&birth_date=1998-01-01&site_id=NULL' http://
 
 -- Doses POST
 curl -d 'id=2&research_name=mRNA-1273&date_taken=2021-10-10' http://flip1.engr.oregonstate.edu:5541/Doses 
-curl -d 'id=10&research_name=Test&date_taken=2021-10-10' http://localhost:3001/Doses 
+curl -d 'id=10&research_name=Test&date_taken=2021-10-11' http://localhost:3001/Doses 
 
 -- Doses DELETE 
-curl -X DELETE -G 'http://localhost:3001/Doses' -d 'id=11&research_name=Test&date_taken=2021-11-29'
-curl -X DELETE 'http://localhost:3001/Doses/?id=11&research_name=Test&date_taken=2021-11-29' 
+curl -X DELETE -H "Content-Type: application/json" \
+    -d '{"id": 10, "research_name": "Test", "date_taken": "2021-10-11"}' \
+    http://localhost:3001/Doses
 
 -- VA POST
 curl -d 'site_id=3&research_name=mRNA-1273' http://flip1.engr.oregonstate.edu:5541/Vaccines_Available 

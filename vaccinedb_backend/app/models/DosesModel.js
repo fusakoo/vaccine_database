@@ -34,7 +34,7 @@ Doses.getAll = result => {
   };
 
 Doses.remove = (doseInfo, result) => {
-  sql.query("DELETE FROM Doses WHERE ?", doseInfo, (err, res) => {
+  sql.query("DELETE FROM Doses WHERE id = ? and research_name = ? and date_taken = ?", [doseInfo.id, doseInfo.research_name, doseInfo.date_taken], (err, res) => {
     if (err) {
       console.log("Error: ", err);
       result(null, err);
