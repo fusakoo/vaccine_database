@@ -7,7 +7,6 @@ curl -d 'last_name=He&first_name=Man&birth_date=1998-01-01&site_id=NULL' http://
 -- Doses POST
 curl -d 'id=2&research_name=mRNA-1273&date_taken=2021-10-10' http://flip1.engr.oregonstate.edu:5541/Doses 
 curl -d 'id=10&research_name=Test&date_taken=2021-10-11' http://localhost:3001/Doses 
-
 -- Doses DELETE 
 curl -X DELETE -H "Content-Type: application/json" \
     -d '{"id": 10, "research_name": "Test", "date_taken": "2021-10-11"}' \
@@ -21,3 +20,5 @@ curl -d 'county_fips_code=54234&county_name=Testown&state=CA' http://flip1.engr.
 
 -- ClinicSites POST
 curl -d 'site_name=Test Clinic&street_address=1 Hello Ave&city=Myplace&postal_code=12345&county_fips_code=12345' http://flip1.engr.oregonstate.edu:5541/Clinic_Sites 
+-- ClinicSites GET by id
+curl -d http://localhost:3001/Clinic_Sites/06001

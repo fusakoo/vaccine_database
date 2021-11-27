@@ -29,7 +29,7 @@ exports.create = (req, res) => {
   });
 };
 
-// find all People from the DB
+// find all Clinic Sites from the DB
 exports.getAll = (req, res) => {
   ClinicSites.getAll((err, data) => {
     if (err)
@@ -41,3 +41,14 @@ exports.getAll = (req, res) => {
   });
 };
 
+// find Clinic Sites based on specified ID from the DB
+exports.getByID = (req, res) => {
+  ClinicSites.getByID(req.params.id, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Clinic Sites."
+      });
+    else res.send(data);
+  });
+};

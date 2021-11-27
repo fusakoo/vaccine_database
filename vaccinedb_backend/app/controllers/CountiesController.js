@@ -27,7 +27,7 @@ exports.create = (req, res) => {
   });
 };
 
-// find all People from the DB
+// find all Counties from the DB
 exports.getAll = (req, res) => {
   Counties.getAll((err, data) => {
     if (err)
@@ -39,3 +39,14 @@ exports.getAll = (req, res) => {
   });
 };
 
+// find all county FIPS codes from the DB
+exports.getFIPS = (req, res) => {
+  Counties.getFIPS((err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving the FIPS codes."
+      });
+    else res.send(data);
+  });
+};

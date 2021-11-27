@@ -33,4 +33,17 @@ Counties.getAll = result => {
     });
   };
 
-  module.exports = Counties;
+Counties.getFIPS = result => {
+  sql.query("SELECT county_fips_code FROM Counties", (err, res) => {
+    if (err) {
+      console.log("Error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("County FIPS codes: ", res);
+    result(null, res);
+  });
+};
+
+module.exports = Counties;
