@@ -41,17 +41,19 @@ exports.getAll = (req, res) => {
 
 // delete a Dose from the DB
 exports.remove = (req, res) => {
-  Doses.remove(req.params.id, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({
-          message: `Dose not found with id ${req.params.id}.`
-        });
-      } else {
-        res.status(500).send({
-          message: "Could not delete Dose with id " + req.params.id
-        });
-      }
-    } else res.send({ message: `Dose was deleted successfully!` });
+  const dose = new Doses({
+    id: req.body.id,
+    research_name: req.body.research_name,
+    date_taken: req.body.date_taken
+  });
+
+  Doses.remove(dose, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while deleting a Dose."
+      });
+    else res.send({ message: `Dose was deleted successfully!` });
+    // else res.send(data);
   });
 };

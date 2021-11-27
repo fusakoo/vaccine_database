@@ -10,7 +10,7 @@ module.exports = app => {
   router.get("/", doses.getAll);
 
   // Delete a specific dose
-  router.delete("/:id", doses.remove);
+  router.delete("/", doses.remove);
 
   app.use('/Doses', router);
 };

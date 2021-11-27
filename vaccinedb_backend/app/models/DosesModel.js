@@ -33,21 +33,15 @@ Doses.getAll = result => {
     });
   };
 
-Doses.remove = (id, result) => {
-  sql.query("DELETE FROM Doses WHERE id = ?", id, (err, res) => {
+Doses.remove = (doseInfo, result) => {
+  sql.query("DELETE FROM Doses WHERE ?", doseInfo, (err, res) => {
     if (err) {
-      console.log("error: ", err);
+      console.log("Error: ", err);
       result(null, err);
       return;
     }
 
-    // if (res.affectedRows == 0) {
-    //   // not found Person with the id
-    //   result({ kind: "not_found" }, null);
-    //   return;
-    // }
-
-    console.log("Deleted dose with id: ", id);
+    console.log("Deleted dose with id: ", doseInfo.id);
     result(null, res);
   });
 };  
