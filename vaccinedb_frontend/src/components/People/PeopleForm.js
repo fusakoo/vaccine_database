@@ -176,7 +176,7 @@ class PeopleForm extends React.Component {
                   <input
                       value={this.state.birth_date}
                       onChange={e => this.setState({ birth_date: e.target.value })}
-                      type="text"
+                      type="date"
                       name="birth_date"
                       placeholder="YYYY-MM-DD"
                       className="form-control"

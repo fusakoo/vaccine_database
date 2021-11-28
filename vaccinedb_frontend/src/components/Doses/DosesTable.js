@@ -41,6 +41,7 @@ class DosesTable extends React.Component {
       })
     }).then(response => response.text())
     .then(data => {
+      alert("Successfully deleted the record.");
       // REMOVE FROM TABLE I GUESS
     })
     .catch(error => {
@@ -59,7 +60,7 @@ class DosesTable extends React.Component {
       var json = JSON.parse(data);
       let doses = [];
       for (var row in json) {
-        var dictionary = { id: json[row].id, research_name: json[row].research_name, date_taken: json[row].date_taken };
+        var dictionary = { id: json[row].id, research_name: json[row].research_name, date_taken: json[row].date_taken.slice(0,10) };
         doses.push(dictionary);
       }
       this.setState({doses: doses});
