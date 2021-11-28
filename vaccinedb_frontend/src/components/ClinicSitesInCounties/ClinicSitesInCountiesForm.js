@@ -81,7 +81,6 @@ class ClinicSitesInCountiesForm extends React.Component {
               className="form-control-select"
               required
             >   
-              {this.state.clinics.map((clinic) => console.log(clinic.county_fips_code))}            
               {this.state.clinics.map((clinic) => <option key={clinic.county_fips_code} value={clinic.county_fips_code}>{clinic.county_fips_code}</option>)}            
               </select>
           </label>

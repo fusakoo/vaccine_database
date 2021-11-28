@@ -204,7 +204,7 @@ class PeopleForm extends React.Component {
                 </label>
               </div>
               <div class="form-group">
-                <label>site_id <span className="optional">(Optional)</span>
+                <label>site_id <span className="required">*</span><span className="optional">Please select one</span>
                   <select
                     value={this.state.site_id}
                     onChange={e => this.setState({ site_id: e.target.value })}
@@ -264,7 +264,7 @@ class PeopleForm extends React.Component {
                 </label>
               </div>
               <div class="form-group">
-                  <label>site_id <span className="optional">(Optional)</span>
+                  <label>site_id <span className="required">*</span><span className="optional">Please select one</span>
                     <select
                       value={this.state.site_id}
                       onChange={e => this.setState({ site_id: e.target.value })}
