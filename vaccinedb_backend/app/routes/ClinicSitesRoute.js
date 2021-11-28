@@ -3,14 +3,17 @@ module.exports = app => {
 
   var router = require("express").Router();
 
-  // Create a new County
+  // Create a new Clinic Site
   router.post("/", clinicSites.create);  
 
-  // Get all Counties
+  // Get all Clinic Sites
   router.get("/", clinicSites.getAll);
 
+  // Get Clinic Site IDs
+  router.get("/GetID", clinicSites.getID);  
+
   // Get Clinic Sites in particular county
-  router.get("/:id", clinicSites.getByID);
+  router.get("/:county", clinicSites.getByCounty);
 
   app.use('/Clinic_Sites', router);
 };

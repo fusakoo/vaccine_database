@@ -42,8 +42,21 @@ class PeopleForm extends React.Component {
       birth_date: "",
       site_id: null,
       errors: [],
+      site_ids: [],
       status: 0
     };
+  }
+
+  componentDidMount() {
+    fetch( pathConfig.URL + '/Clinic_Sites/GetID' , {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(results => results.json())
+    .then(data => this.setState({ site_ids: data })
+    );
   }
 
   HandleSubmit = (e) => {
@@ -192,14 +205,18 @@ class PeopleForm extends React.Component {
               </div>
               <div class="form-group">
                 <label>site_id <span className="optional">(Optional)</span>
-                  <input
-                      value={this.state.site_id}
-                      onChange={e => this.setState({ site_id: e.target.value })}
-                      type="number"
-                      name="site_id"
-                      placeholder="Site ID"
-                      className="form-control"
-                  />
+                  <select
+                    value={this.state.site_id}
+                    onChange={e => this.setState({ site_id: e.target.value })}
+                    type="number"
+                    name="county_fips_code"
+                    placeholder="County FIPS code"
+                    className="form-control-select"
+                    required
+                  >   
+                    <option key={null} value={null}>null</option>
+                    {this.state.site_ids.map((site_id) => <option key={site_id.site_id} value={site_id.site_id}>{site_id.site_id}</option>)}            
+                  </select>
                 </label>
               </div>       
               <div class="form-group">
@@ -248,14 +265,18 @@ class PeopleForm extends React.Component {
               </div>
               <div class="form-group">
                   <label>site_id <span className="optional">(Optional)</span>
-                    <input
-                        value={this.state.site_id}
-                        onChange={e => this.setState({ site_id: e.target.value })}
-                        type="number"
-                        name="site_id"
-                        placeholder="Site ID"
-                        className="form-control"
-                    />
+                    <select
+                      value={this.state.site_id}
+                      onChange={e => this.setState({ site_id: e.target.value })}
+                      type="number"
+                      name="county_fips_code"
+                      placeholder="County FIPS code"
+                      className="form-control-select"
+                      required
+                    >   
+                      <option key={null} value={null}>null</option>
+                      {this.state.site_ids.map((site_id) => <option key={site_id.site_id} value={site_id.site_id}>{site_id.site_id}</option>)}            
+                    </select>
                   </label>
               </div> 
               <div className="form-group">
