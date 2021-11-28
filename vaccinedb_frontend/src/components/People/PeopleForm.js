@@ -75,7 +75,10 @@ class PeopleForm extends React.Component {
         })
       }).then(response => response.json())
       .then(data => {
-        alert("Successfully updated an existing person.");
+        if (alert("Successfully updated an existing person.")) {
+        } else {
+          window.location.reload();
+        }
       })
       .catch(error => {
         alert(error);
@@ -103,7 +106,10 @@ class PeopleForm extends React.Component {
       })
       }).then(response => response.json())
       .then(data => {
-        alert("Successfully added a new person.");
+        if (alert("Successfully added a new person.")) {
+        } else {
+          window.location.reload();
+        }
       })
       .catch(error => {
         alert(error);

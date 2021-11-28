@@ -76,7 +76,10 @@ class CSForm extends React.Component {
       })
       }).then(response => response.json())
       .then(data => {
-        alert("Successfully added a new clinic site.");
+        if (alert("Successfully added a new clinic site.")) {
+        } else {
+          window.location.reload();
+        }
       })
       .catch(error => {
         alert(error);

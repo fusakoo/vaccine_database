@@ -195,7 +195,7 @@ form {
 }
 
 .delete-button {
-  width: 50%;
+  width: 30%;
   padding: 0.4rem;
   margin-top: 5px;
   background: var(--background-color);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAsync } from "react-async";
+import { useHistory } from "react-router-dom";
 const pathConfig = require("../config/pathconfig.js");
 
 let loadTableData = async () => {
@@ -41,7 +42,10 @@ class DosesTable extends React.Component {
       })
     }).then(response => response.text())
     .then(data => {
-      alert("Successfully deleted the record.");
+      if (alert("Successfully deleted the record.")) {
+      } else {
+        window.location.reload();
+      }
       // REMOVE FROM TABLE I GUESS
     })
     .catch(error => {

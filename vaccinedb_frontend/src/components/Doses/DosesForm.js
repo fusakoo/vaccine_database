@@ -52,7 +52,10 @@ class DosesForm extends React.Component {
       })
       }).then(response => response.json())
       .then(data => {
-        alert("Successfully added a new dose.");
+        if (alert("Successfully added a new dose.")) {
+        } else {
+          window.location.reload();
+        }
       })
       .catch(error => {
         alert(error);
