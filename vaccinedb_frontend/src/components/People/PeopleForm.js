@@ -16,7 +16,7 @@ function ValidateAdd(birth_date, site_id) {
   return errors;
 }
 
-function ValidateUpdate(site_id, id) { 
+function ValidateUpdate(id, site_id) { 
 
   const errors = [];
 
@@ -62,7 +62,10 @@ class PeopleForm extends React.Component {
   HandleSubmit = (e) => {
     e.preventDefault();
 
-    if (this.state.site_id == "") this.setState({ site_id: null })
+    if (this.state.status == 1) {
+      if (this.state.last_name == "") this.setState({ last_name: null })
+      if (this.state.first_name == "") this.setState({ first_name: null })
+    }
 
     const { id, last_name, first_name, birth_date, site_id, err, status } = this.state;
 
@@ -84,7 +87,8 @@ class PeopleForm extends React.Component {
           id:id,
           last_name:last_name, 
           first_name:first_name, 
-          site_id:site_id
+          site_id:site_id,
+          should_update_site_id:false
         })
       }).then(response => response.json())
       .then(data => {
