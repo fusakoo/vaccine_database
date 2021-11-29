@@ -1,3 +1,3 @@
 module.exports = {
-  URL: 'http://localhost:3001'
+  URL: 'http://flip1.engr.oregonstate.edu:5545'
 };

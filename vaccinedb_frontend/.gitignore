@@ -24,4 +24,5 @@ yarn-error.log*
 
 # local
 .env
+/src/components/config/pathconfig.js
 bdcon.js
