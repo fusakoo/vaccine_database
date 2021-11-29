@@ -52,7 +52,10 @@ class DosesForm extends React.Component {
       })
       }).then(response => response.json())
       .then(data => {
-        alert("Successfully added a new dose.");
+        if (alert("Successfully added a new dose.")) {
+        } else {
+          window.location.reload();
+        }
       })
       .catch(error => {
         alert(error);
@@ -99,7 +102,7 @@ class DosesForm extends React.Component {
             <input
               value={this.state.date_taken}
               onChange={e => this.setState({ date_taken: e.target.value })}
-              type="text"
+              type="date"
               name="date_taken"
               placeholder="YYYY-MM-DD"
               className="form-control"

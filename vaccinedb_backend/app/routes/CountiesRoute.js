@@ -9,5 +9,8 @@ module.exports = app => {
   // Get all Counties
   router.get("/", counties.getAll);
 
+  // Get all FIPS codes only 
+  router.get("/FIPS", counties.getFIPS);
+
   app.use('/Counties', router);
 };

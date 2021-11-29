@@ -33,4 +33,17 @@ Doses.getAll = result => {
     });
   };
 
-  module.exports = Doses;
+Doses.remove = (doseInfo, result) => {
+  sql.query("DELETE FROM Doses WHERE id = ? and research_name = ? and date_taken = ?", [doseInfo.id, doseInfo.research_name, doseInfo.date_taken], (err, res) => {
+    if (err) {
+      console.log("Error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("Deleted dose with id: ", doseInfo.id, ", research_name: ", doseInfo.research_name, ", date_taken: ", doseInfo.date_taken);
+    result(null, res);
+  });
+};  
+
+module.exports = Doses;

@@ -44,7 +44,10 @@ class VaccinesForm extends React.Component {
       })
     }).then(response => response.json())
     .then(data => {
-      alert("Successfully added a new vaccine.");
+      if (alert("Successfully added a new vaccine.")) {
+      } else {
+        window.location.reload();
+      }
     })
     .catch(error => {
       alert(error);

@@ -1,4 +1,5 @@
 import React from 'react';
+const pathConfig = require("../config/pathconfig.js");
 
 function Validate(county_fips_code) { 
 
@@ -25,8 +26,21 @@ class ClinicSitesInCountiesForm extends React.Component {
     super();
     this.state = {
       county_fips_code: null,
-      errors: []
+      errors: [],
+      clinics: []
     };
+  }
+
+  componentDidMount() {
+    fetch( pathConfig.URL + '/Counties/FIPS' , {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(results => results.json())
+    .then(data => this.setState({ clinics: data })
+    );
   }
 
   HandleSubmit = (e) => {
@@ -42,10 +56,13 @@ class ClinicSitesInCountiesForm extends React.Component {
     }
 
     // SQL
+    // TODO: Add a functionality where once the user press submit, it'll populate/render the table
   };
 
   render() {
     const { errors } = this.state;
+
+    console.log(this.state.clinics);
 
     return (
       <form className="new-input" onSubmit={this.HandleSubmit}>
@@ -63,11 +80,9 @@ class ClinicSitesInCountiesForm extends React.Component {
               placeholder="County FIPS code"
               className="form-control-select"
               required
-            >
-              <option value="06001">06001</option>
-              <option value="08041">08041</option>
-              <option value="12345">12345</option>
-            </select>
+            >   
+              {this.state.clinics.map((clinic) => <option key={clinic.county_fips_code} value={clinic.county_fips_code}>{clinic.county_fips_code}</option>)}            
+              </select>
           </label>
         </div>
         <div class="form-group">

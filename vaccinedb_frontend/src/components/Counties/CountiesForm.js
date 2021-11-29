@@ -60,7 +60,10 @@ class CountiesForm extends React.Component {
       })
       }).then(response => response.json())
       .then(data => {
-        alert("Successfully added a new county.");
+        if (alert("Successfully added a new county.")) {
+        } else {
+          window.location.reload();
+        }
       })
       .catch(error => {
         alert(error);

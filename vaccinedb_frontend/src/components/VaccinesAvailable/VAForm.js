@@ -46,7 +46,10 @@ class VAForm extends React.Component {
       })
       }).then(response => response.json())
       .then(data => {
-        alert("Successfully added a new vaccine availability.");
+        if (alert("Successfully added a new vaccine availability.")) {
+        } else {
+          window.location.reload();
+        }
       })
       .catch(error => {
         alert(error);

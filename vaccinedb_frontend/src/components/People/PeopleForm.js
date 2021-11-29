@@ -16,7 +16,7 @@ function ValidateAdd(birth_date, site_id) {
   return errors;
 }
 
-function ValidateUpdate(site_id, id) { 
+function ValidateUpdate(id, site_id) { 
 
   const errors = [];
 
@@ -42,12 +42,30 @@ class PeopleForm extends React.Component {
       birth_date: "",
       site_id: null,
       errors: [],
+      site_ids: [],
       status: 0
     };
   }
 
+  componentDidMount() {
+    fetch( pathConfig.URL + '/Clinic_Sites/GetID' , {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(results => results.json())
+    .then(data => this.setState({ site_ids: data })
+    );
+  }
+
   HandleSubmit = (e) => {
     e.preventDefault();
+
+    if (this.state.status == 1) {
+      if (this.state.last_name == "") this.setState({ last_name: null })
+      if (this.state.first_name == "") this.setState({ first_name: null })
+    }
 
     const { id, last_name, first_name, birth_date, site_id, err, status } = this.state;
 
@@ -60,7 +78,28 @@ class PeopleForm extends React.Component {
         return;
       }
 
-      // SQL
+      fetch( pathConfig.URL + '/People', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id:id,
+          last_name:last_name, 
+          first_name:first_name, 
+          site_id:site_id,
+          should_update_site_id:false
+        })
+      }).then(response => response.json())
+      .then(data => {
+        if (alert("Successfully updated an existing person.")) {
+        } else {
+          window.location.reload();
+        }
+      })
+      .catch(error => {
+        alert(error);
+      });
     }
     else { // Add
 
@@ -84,7 +123,10 @@ class PeopleForm extends React.Component {
       })
       }).then(response => response.json())
       .then(data => {
-        alert("Successfully added a new person.");
+        if (alert("Successfully added a new person.")) {
+        } else {
+          window.location.reload();
+        }
       })
       .catch(error => {
         alert(error);
@@ -157,7 +199,7 @@ class PeopleForm extends React.Component {
                   <input
                       value={this.state.birth_date}
                       onChange={e => this.setState({ birth_date: e.target.value })}
-                      type="text"
+                      type="date"
                       name="birth_date"
                       placeholder="YYYY-MM-DD"
                       className="form-control"
@@ -166,15 +208,19 @@ class PeopleForm extends React.Component {
                 </label>
               </div>
               <div class="form-group">
-                <label>site_id <span className="optional">(Optional)</span>
-                  <input
-                      value={this.state.site_id}
-                      onChange={e => this.setState({ site_id: e.target.value })}
-                      type="number"
-                      name="site_id"
-                      placeholder="Site ID"
-                      className="form-control"
-                  />
+                <label>site_id <span className="required">*</span><span className="optional">Please select one</span>
+                  <select
+                    value={this.state.site_id}
+                    onChange={e => this.setState({ site_id: e.target.value })}
+                    type="number"
+                    name="county_fips_code"
+                    placeholder="County FIPS code"
+                    className="form-control-select"
+                    required
+                  >   
+                    <option key={null} value={null}>null</option>
+                    {this.state.site_ids.map((site_id) => <option key={site_id.site_id} value={site_id.site_id}>{site_id.site_id}</option>)}            
+                  </select>
                 </label>
               </div>       
               <div class="form-group">
@@ -222,15 +268,19 @@ class PeopleForm extends React.Component {
                 </label>
               </div>
               <div class="form-group">
-                  <label>site_id <span className="optional">(Optional)</span>
-                    <input
-                        value={this.state.site_id}
-                        onChange={e => this.setState({ site_id: e.target.value })}
-                        type="number"
-                        name="site_id"
-                        placeholder="Site ID"
-                        className="form-control"
-                    />
+                  <label>site_id <span className="required">*</span><span className="optional">Please select one</span>
+                    <select
+                      value={this.state.site_id}
+                      onChange={e => this.setState({ site_id: e.target.value })}
+                      type="number"
+                      name="county_fips_code"
+                      placeholder="County FIPS code"
+                      className="form-control-select"
+                      required
+                    >   
+                      <option key={null} value={null}>null</option>
+                      {this.state.site_ids.map((site_id) => <option key={site_id.site_id} value={site_id.site_id}>{site_id.site_id}</option>)}            
+                    </select>
                   </label>
               </div> 
               <div className="form-group">

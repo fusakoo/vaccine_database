@@ -3,6 +3,7 @@
 :root {
   --accent-color: #D1CB17;
   --sub-color: #AA77D6;
+  --background-color: rgba(0,0,0,0.8);
 }
 
 .App {
@@ -84,7 +85,7 @@
 }
 
 .table-container th {
-  border-bottom: 3px solid rgba(0,0,0,0.8);
+  border-bottom: 3px solid var(--background-color);
   background-color: #fff;
 }
 
@@ -109,7 +110,7 @@ caption {
 /* Form CSS */
 
 form {
-  background: rgba(0,0,0,0.8);
+  background: var(--background-color);
   color: white;
   text-align: left;
   font-size: 17px;
@@ -176,7 +177,7 @@ form {
   cursor: pointer;
 }
 
-button {
+.submit-button {
   display: block;
   position: relative;
   width: 15%;
@@ -191,6 +192,26 @@ button {
   border-radius: 0.5rem;
   cursor: pointer;
   border: 3px solid #D1CB17;
+}
+
+.delete-button {
+  width: 30%;
+  padding: 0.4rem;
+  margin-top: 5px;
+  background: var(--background-color);
+  color: #fff;
+  /* text-align: center; */
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: none;
+  transition: 0.15s ease-in-out;
+}
+
+.delete-button:hover {
+  background-color: var(--accent-color);
 }
 
 .required {

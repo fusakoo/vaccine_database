@@ -18,7 +18,7 @@ function PeopleTable() {
         + json[row].id + "</td><td>" 
         + json[row].last_name + "</td><td>" 
         + json[row].first_name + "</td><td>" 
-        + json[row].birth_date + "</td><td>" 
+        + json[row].birth_date.slice(0,10) + "</td><td>" 
         + json[row].site_id + "</td></tr>";
       document.getElementById("PeopleBody").innerHTML = HTML;
     })

@@ -9,5 +9,8 @@ module.exports = app => {
   // Get all the People
   router.get("/", people.getAll);
 
+  // Update a specific Person
+  router.put("/", people.update);
+
   app.use('/People', router);
 };
