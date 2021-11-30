@@ -19,9 +19,33 @@ class VAForm extends React.Component {
     this.state = {
       site_id: null,
       research_name: "",
-      errors: []
+      errors: [],
+      clinics: [],
+      vaccines: []
     };
   }
+
+  componentDidMount() {
+    fetch( pathConfig.URL + '/Clinic_Sites' , {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(results => results.json())
+    .then(data => this.setState({ clinics: data })
+    );
+    fetch( pathConfig.URL + '/Vaccines' , {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(results => results.json())
+    .then(data => this.setState({ vaccines: data })
+    );
+  }
+
 
   HandleSubmit = (e) => {
     e.preventDefault();
@@ -66,29 +90,29 @@ class VAForm extends React.Component {
         ))}
         <p><span className="required">* </span><span className="optional">Is required</span></p>
         <div class="form-group">
-          <label>site_id <span className="required">*</span>
-            <input
+          <label>Clinic site <span className="optional">(site_id)</span><span className="required">*</span>
+            <select
               value={this.state.site_id}
               onChange={e => this.setState({ site_id: e.target.value })}
-              type="number"
               name="site_id"
-              placeholder="Clinic Site ID"
-              className="form-control"
+              className="form-control-select"
               required
-            />
+            >
+              {this.state.clinics.map((clinic) => <option value={clinic.site_id}>{clinic.site_name}</option>)}            
+            </select>
           </label>
         </div>
         <div class="form-group">
-          <label>research_name <span className="required">*</span>
-            <input
+          <label>Vaccine <span className="optional">(research_name)</span><span className="required">*</span>
+            <select
               value={this.state.research_name}
               onChange={e => this.setState({ research_name: e.target.value })}
-              type="text"
               name="research_name"
-              placeholder="Research name"
-              className="form-control"
+              className="form-control-select"
               required
-            />
+            >
+              {this.state.vaccines.map((vaccine) => <option value={vaccine.research_name}>{vaccine.research_name}</option>)}            
+            </select>
           </label>
         </div>
         <div class="form-group">

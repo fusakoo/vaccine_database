@@ -27,19 +27,19 @@ class ClinicSitesInCountiesForm extends React.Component {
     this.state = {
       county_fips_code: null,
       errors: [],
-      clinics: []
+      counties: []
     };
   }
 
   componentDidMount() {
-    fetch( pathConfig.URL + '/Counties/FIPS' , {
+    fetch( pathConfig.URL + '/Counties' , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }
     })
     .then(results => results.json())
-    .then(data => this.setState({ clinics: data })
+    .then(data => this.setState({ counties: data })
     );
   }
 
@@ -71,17 +71,15 @@ class ClinicSitesInCountiesForm extends React.Component {
         ))}
         <p><span className="required">* </span><span className="optional">Is required</span></p>
         <div class="form-group">
-          <label>county_fips_code <span className="required">*</span>
+          <label>County Name <span className="optional">(county_name)</span><span className="required">*</span>
             <select
               value={this.state.county_fips_code}
               onChange={e => this.setState({ county_fips_code: e.target.value })}
-              type="number"
               name="county_fips_code"
-              placeholder="County FIPS code"
               className="form-control-select"
               required
             >   
-              {this.state.clinics.map((clinic) => <option key={clinic.county_fips_code} value={clinic.county_fips_code}>{clinic.county_fips_code}</option>)}            
+              {this.state.counties.map((county) => <option value={county.county_fips_code}>{county.county_name + ', ' + county.state}</option>)}            
               </select>
           </label>
         </div>

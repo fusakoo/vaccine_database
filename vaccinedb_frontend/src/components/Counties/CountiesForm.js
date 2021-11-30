@@ -80,7 +80,7 @@ class CountiesForm extends React.Component {
         ))}
         <p><span className="required">* </span><span className="optional">Is required</span></p>
         <div class="form-group">
-          <label>county_fips_code <span className="required">*</span>
+          <label>FIPS code <span className="optional">(county_fips_code)</span> <span className="required">*</span>
             <input
               value={this.state.county_fips_code}
               onChange={e => this.setState({ county_fips_code: e.target.value })}
@@ -94,7 +94,7 @@ class CountiesForm extends React.Component {
           <p className="shrink"><span className="optional">See <a href="https://www.census.gov/prod/techdoc/cbp/cbp95/st-cnty.pdf">list of FIPS codes</a> for reference</span></p>
         </div>
         <div class="form-group">
-          <label>county_name <span className="required">*</span>
+          <label>County <span className="optional">(county_name)</span><span className="required">*</span>
             <input
               value={this.state.county_name}
               onChange={e => this.setState({ county_name: e.target.value })}
@@ -107,7 +107,7 @@ class CountiesForm extends React.Component {
           </label>
         </div>
         <div class="form-group">
-          <label>state <span className="required">*</span>
+          <label>State <span className="optional">(state)</span><span className="required">*</span>
             <input
               value={this.state.state}
               onChange={e => this.setState({ state: e.target.value })}
