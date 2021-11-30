@@ -275,6 +275,7 @@ class PeopleForm extends React.Component {
                       required
                     >   
                     <option value={false}>(Do not update)</option>
+                    <option value={null}>null</option>
                     {this.state.sites.map((site) => <option value={site.site_id}>{site.site_name}</option>)}            
                     </select>
                   </label>
