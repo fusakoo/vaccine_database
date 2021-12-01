@@ -5,7 +5,7 @@ function ValidateAdd(birth_date, site_id) {
 
   const errors = [];
 
-  if (!(/^\d{4}[\-](0?[1-9]|1[012])[\-](0?[1-9]|[12][0-9]|3[01])$/.test(birth_date))) {
+  if (!(/^\d{4}[-](0?[1-9]|1[012])[-](0?[1-9]|[12][0-9]|3[01])$/.test(birth_date))) {
     errors.push("Invalid Format For {birth_date}");
   }
 
@@ -42,7 +42,7 @@ class PeopleForm extends React.Component {
       birth_date: "",
       sites: null,
       errors: [],
-      sites: [],
+      clinic_sites: [],
       status: 0
     };
   }
@@ -55,21 +55,21 @@ class PeopleForm extends React.Component {
       }
     })
     .then(results => results.json())
-    .then(data => this.setState({ sites: data })
+    .then(data => this.setState({ clinic_sites: data })
     );
   }
 
   HandleSubmit = (e) => {
     e.preventDefault();
 
-    if (this.state.status == 1) {
-      if (this.state.last_name == "") this.setState({ last_name: null })
-      if (this.state.first_name == "") this.setState({ first_name: null })
+    if (this.state.status === 1) {
+      if (this.state.last_name === "") this.setState({ last_name: null })
+      if (this.state.first_name === "") this.setState({ first_name: null })
     }
 
-    const { id, last_name, first_name, birth_date, site_id, err, status } = this.state;
+    const { id, last_name, first_name, birth_date, site_id, status } = this.state;
 
-    if (status == 1) { // Update
+    if (status === 1) { // Update
 
       const errors = ValidateUpdate(id, site_id);
       const hasErrors = errors.length > 0;
@@ -217,7 +217,7 @@ class PeopleForm extends React.Component {
                     required
                   >   
                     <option key={null} value={null}></option>
-                    {this.state.sites.map((site) => <option value={site.site_id}>{site.site_name}</option>)}            
+                    {this.state.clinic_sites.map((site) => <option value={site.site_id}>{site.site_name}</option>)}            
                   </select>
                 </label>
               </div>       
@@ -276,7 +276,7 @@ class PeopleForm extends React.Component {
                     >   
                     <option value={false}>(Do not update)</option>
                     <option value={null}>null</option>
-                    {this.state.sites.map((site) => <option value={site.site_id}>{site.site_name}</option>)}            
+                    {this.state.clinic_sites.map((site) => <option value={site.site_id}>{site.site_name}</option>)}            
                     </select>
                   </label>
               </div> 

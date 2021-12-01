@@ -17,7 +17,7 @@ function Validate(county_fips_code, state) {
     errors.push("Invalid {county_fips_code}");
   }
 
-  if (!(/[A-Z]{2}/.test(state)) || state.length != 2) {
+  if (!(/[A-Z]{2}/.test(state)) || state.length !== 2) {
     errors.push("Invalid Format For {state}");
   }
 

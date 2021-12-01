@@ -9,7 +9,7 @@ function Validate(id, date_taken) {
     errors.push("Can't Have Negative Or Zero {id}");
   }
 
-  if (!(/^\d{4}[\-](0?[1-9]|1[012])[\-](0?[1-9]|[12][0-9]|3[01])$/.test(date_taken))) {
+  if (!(/^\d{4}[-](0?[1-9]|1[012])[-](0?[1-9]|[12][0-9]|3[01])$/.test(date_taken))) {
     errors.push("Invalid Format For {date_taken}");
   }
 
@@ -113,7 +113,6 @@ class DosesForm extends React.Component {
               value={this.state.research_name}
               onChange={e => this.setState({ research_name: e.target.value })}
               name="research_name"
-              placeholder="Research name"
               className="form-control-select"
               required
             >

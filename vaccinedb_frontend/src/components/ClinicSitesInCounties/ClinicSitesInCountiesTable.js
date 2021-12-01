@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
 function ClinicSitesInCountiesTable() {
   return (
@@ -13,7 +13,7 @@ function ClinicSitesInCountiesTable() {
           <th>postal_code</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id='CSBody'>
       </tbody>
     </table>
   );

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useAsync } from "react-async";
-import { useHistory } from "react-router-dom";
 const pathConfig = require("../config/pathconfig.js");
 
 let loadTableData = async () => {
@@ -46,7 +45,6 @@ class DosesTable extends React.Component {
       } else {
         window.location.reload();
       }
-      // REMOVE FROM TABLE I GUESS
     })
     .catch(error => {
       alert(error);
