@@ -1,12 +1,13 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 
 // Make sure to update when testing
 var corsOptions = {
   // This should point to the port/server of the frontend app
-  origin: "http://flip1.engr.oregonstate.edu:5544"
+  origin: process.env.FRONTEND_URL
 };
 
 app.use(cors(corsOptions));
@@ -30,7 +31,8 @@ require("./app/routes/VaccinesRoute.js")(app);
 require("./app/routes/VARoute.js")(app);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 5545;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+  console.log(`Server is running on ${process.env.HOST}:${PORT}.`);
+  console.log(`Server is waiting for ${process.env.FRONTEND_URL}.`)
 });
