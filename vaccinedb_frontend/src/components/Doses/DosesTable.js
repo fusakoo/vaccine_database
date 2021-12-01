@@ -1,26 +1,4 @@
 import React from 'react';
-import { useAsync } from "react-async";
-const pathConfig = require("../config/pathconfig.js");
-
-let loadTableData = async () => {
-  const doses = await 
-  console.log(doses.length);
-  return doses;
-}
-
-function RenderTableData() {
-  let doses = useAsync({ promiseFn: loadTableData});
-  return doses.map(dose => {
-    const {id, research_name, date_taken} = dose;
-    return ( 
-      <tr className="list-item">
-        <td>{id}</td>
-        <td>{research_name}</td>
-        <td>{date_taken}</td>
-      </tr>
-    );
-  });
-}
 
 class DosesTable extends React.Component {
   constructor() {
@@ -29,7 +7,7 @@ class DosesTable extends React.Component {
   }
 
   HandleDelete = (id,research_name,date_taken) => {
-    fetch( pathConfig.URL + '/Doses' , {
+    fetch( process.env.REACT_APP_BACKEND_URL + '/Doses' , {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -52,7 +30,7 @@ class DosesTable extends React.Component {
   }
 
   componentDidMount() {
-    fetch( pathConfig.URL + '/Doses' , {
+    fetch( process.env.REACT_APP_BACKEND_URL + '/Doses' , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

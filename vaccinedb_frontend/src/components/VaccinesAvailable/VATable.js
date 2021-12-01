@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react';
-const pathConfig = require("../config/pathconfig.js");
 
 function VATable() {
 
   useEffect ( () => {
-    fetch( pathConfig.URL + '/Vaccines_Available' , {
+    fetch( process.env.REACT_APP_BACKEND_URL + '/Vaccines_Available' , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

@@ -1,5 +1,4 @@
 import React from 'react';
-const pathConfig = require("../config/pathconfig.js");
 
 function Validate(site_id) { 
 
@@ -26,7 +25,7 @@ class VAForm extends React.Component {
   }
 
   componentDidMount() {
-    fetch( pathConfig.URL + '/Clinic_Sites' , {
+    fetch( process.env.REACT_APP_BACKEND_URL + '/Clinic_Sites' , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -34,8 +33,10 @@ class VAForm extends React.Component {
     })
     .then(results => results.json())
     .then(data => this.setState({ clinics: data })
-    );
-    fetch( pathConfig.URL + '/Vaccines' , {
+    ).catch(error => {
+      alert(error);
+    });
+    fetch( process.env.REACT_APP_BACKEND_URL + '/Vaccines' , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -43,7 +44,9 @@ class VAForm extends React.Component {
     })
     .then(results => results.json())
     .then(data => this.setState({ vaccines: data })
-    );
+    ).catch(error => {
+      alert(error);
+    });
   }
 
 
@@ -59,7 +62,7 @@ class VAForm extends React.Component {
       return;
     }
 
-    fetch( pathConfig.URL + '/Vaccines_Available' , {
+    fetch( process.env.REACT_APP_BACKEND_URL + '/Vaccines_Available' , {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react';
-const pathConfig = require("../config/pathconfig.js");
 
 function PeopleTable() {
 
   useEffect ( () => {
-    fetch( pathConfig.URL + '/People', {
+    fetch( process.env.REACT_APP_BACKEND_URL + '/People', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

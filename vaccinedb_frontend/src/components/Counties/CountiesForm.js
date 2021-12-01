@@ -1,5 +1,4 @@
 import React from 'react';
-const pathConfig = require("../config/pathconfig.js");
 
 function Validate(county_fips_code, state) { 
 
@@ -48,7 +47,7 @@ class CountiesForm extends React.Component {
       return;
     }
 
-    fetch( pathConfig.URL + '/Counties' , {
+    fetch( process.env.REACT_APP_BACKEND_URL + '/Counties' , {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

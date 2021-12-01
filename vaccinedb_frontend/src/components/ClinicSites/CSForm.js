@@ -1,5 +1,4 @@
 import React from 'react';
-const pathConfig = require("../config/pathconfig.js");
 
 function Validate(postal_code, county_fips_code) { 
 
@@ -52,7 +51,7 @@ class CSForm extends React.Component {
   }
 
   componentDidMount() {
-    fetch( pathConfig.URL + '/Counties' , {
+    fetch( process.env.REACT_APP_BACKEND_URL + '/Counties' , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -60,7 +59,9 @@ class CSForm extends React.Component {
     })
     .then(results => results.json())
     .then(data => this.setState({ counties: data })
-    );
+    ).catch(error => {
+      alert(error);
+    });
   }
 
   HandleSubmit = (e) => {
@@ -75,7 +76,7 @@ class CSForm extends React.Component {
       return;
     }
 
-    fetch( pathConfig.URL + '/Clinic_Sites' , {
+    fetch( process.env.REACT_APP_BACKEND_URL + '/Clinic_Sites' , {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

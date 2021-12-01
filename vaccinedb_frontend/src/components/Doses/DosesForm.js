@@ -1,5 +1,4 @@
 import React from 'react';
-const pathConfig = require("../config/pathconfig.js");
 
 function Validate(id, date_taken) { 
 
@@ -31,7 +30,7 @@ class DosesForm extends React.Component {
   }
 
   componentDidMount() {
-    fetch( pathConfig.URL + '/Vaccines' , {
+    fetch( process.env.REACT_APP_BACKEND_URL + '/Vaccines' , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -39,8 +38,10 @@ class DosesForm extends React.Component {
     })
     .then(results => results.json())
     .then(data => this.setState({ vaccines: data })
-    );
-    fetch( pathConfig.URL + '/People' , {
+    ).catch(error => {
+      alert(error);
+    });
+    fetch( process.env.REACT_APP_BACKEND_URL + '/People' , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -48,7 +49,9 @@ class DosesForm extends React.Component {
     })
     .then(results => results.json())
     .then(data => this.setState({ people: data })
-    );
+    ).catch(error => {
+      alert(error);
+    });
   }
 
   HandleSubmit = (e) => {
@@ -63,7 +66,7 @@ class DosesForm extends React.Component {
       return;
     }
 
-    fetch( pathConfig.URL + '/Doses' , {
+    fetch( process.env.REACT_APP_BACKEND_URL + '/Doses' , {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

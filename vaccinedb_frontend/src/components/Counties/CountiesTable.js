@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react';
-const pathConfig = require("../config/pathconfig.js");
 
 function CountiesTable() {
 
   useEffect ( () => {
-    fetch( pathConfig.URL + '/Counties' , {
+    fetch( process.env.REACT_APP_BACKEND_URL + '/Counties' , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

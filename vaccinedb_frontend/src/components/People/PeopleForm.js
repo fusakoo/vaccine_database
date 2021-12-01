@@ -1,5 +1,4 @@
 import React from 'react';
-const pathConfig = require("../config/pathconfig.js");
 
 function ValidateAdd(birth_date, site_id) { 
 
@@ -48,7 +47,7 @@ class PeopleForm extends React.Component {
   }
 
   componentDidMount() {
-    fetch( pathConfig.URL + '/Clinic_Sites/' , {
+    fetch( process.env.REACT_APP_BACKEND_URL + '/Clinic_Sites/' , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -56,7 +55,9 @@ class PeopleForm extends React.Component {
     })
     .then(results => results.json())
     .then(data => this.setState({ clinic_sites: data })
-    );
+    ).catch(error => {
+      alert(error);
+    });
   }
 
   HandleSubmit = (e) => {
@@ -78,7 +79,7 @@ class PeopleForm extends React.Component {
         return;
       }
 
-      fetch( pathConfig.URL + '/People', {
+      fetch( process.env.REACT_APP_BACKEND_URL + '/People', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -110,7 +111,7 @@ class PeopleForm extends React.Component {
         return;
       }
 
-      fetch( pathConfig.URL + '/People' , {
+      fetch( process.env.REACT_APP_BACKEND_URL + '/People' , {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

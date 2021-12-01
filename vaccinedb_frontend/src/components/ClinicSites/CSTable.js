@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react';
-const pathConfig = require("../config/pathconfig.js");
 
 function CSTable() {
 
   useEffect ( () => {
-    fetch( pathConfig.URL + '/Clinic_Sites' , {
+    fetch( process.env.REACT_APP_BACKEND_URL + '/Clinic_Sites' , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

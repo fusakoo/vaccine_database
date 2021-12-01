@@ -1,5 +1,4 @@
 import React from 'react';
-const pathConfig = require("../config/pathconfig.js");
 
 function Validate(county_fips_code) { 
 
@@ -33,7 +32,7 @@ class ClinicSitesInCountiesForm extends React.Component {
   }
 
   componentDidMount() {
-    fetch( pathConfig.URL + '/Counties' , {
+    fetch( process.env.REACT_APP_BACKEND_URL + '/Counties' , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -41,7 +40,9 @@ class ClinicSitesInCountiesForm extends React.Component {
     })
     .then(results => results.json())
     .then(data => this.setState({ counties: data })
-    );
+    ).catch(error => {
+      alert(error);
+    });
   }
 
   HandleSubmit = (e) => {
@@ -58,7 +59,7 @@ class ClinicSitesInCountiesForm extends React.Component {
 
     console.log(county_fips_code)
 
-    fetch( pathConfig.URL + '/Clinic_Sites/' + county_fips_code , {
+    fetch( process.env.REACT_APP_BACKEND_URL + '/Clinic_Sites/' + county_fips_code , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
