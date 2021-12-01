@@ -15,7 +15,7 @@ function ValidateAdd(birth_date, site_id) {
   return errors;
 }
 
-function ValidateUpdate(id, site_id) { 
+function ValidateUpdate(id, last_name, first_name, site_id, should_update_site_id) { 
 
   const errors = [];
 
@@ -25,6 +25,10 @@ function ValidateUpdate(id, site_id) {
 
   if (site_id !== null && site_id < 1) {
     errors.push("Can't Have Negative Or Zero {site_id}");
+  }
+
+  if (last_name === null && first_name === null && should_update_site_id === false) {
+    errors.push("Can't Update With No Values");
   }
 
   return errors;
@@ -39,7 +43,7 @@ class PeopleForm extends React.Component {
       last_name: "",
       first_name: "",
       birth_date: "",
-      sites: null,
+      site_id: -1,
       errors: [],
       clinic_sites: [],
       status: 0
@@ -63,16 +67,16 @@ class PeopleForm extends React.Component {
   HandleSubmit = (e) => {
     e.preventDefault();
 
-    if (this.state.status === 1) {
-      if (this.state.last_name === "") this.setState({ last_name: null })
-      if (this.state.first_name === "") this.setState({ first_name: null })
-    }
+    let { id, last_name, first_name, birth_date, site_id, status } = this.state;
 
-    const { id, last_name, first_name, birth_date, site_id, status } = this.state;
+    if (last_name === '') last_name = null;
+    if (first_name === '') first_name = null;
+    if (site_id === 'null') site_id = null;
 
     if (status === 1) { // Update
 
-      const errors = ValidateUpdate(id, site_id);
+      const should_update_site_id = (site_id !== false);
+      const errors = ValidateUpdate(id, last_name, first_name, site_id, should_update_site_id);
       const hasErrors = errors.length > 0;
       if (hasErrors) { 
         this.setState({ errors });
@@ -89,7 +93,7 @@ class PeopleForm extends React.Component {
           last_name:last_name, 
           first_name:first_name, 
           site_id:site_id,
-          should_update_site_id:false
+          should_update_site_id:should_update_site_id
         })
       }).then(response => response.json())
       .then(data => {
@@ -217,7 +221,7 @@ class PeopleForm extends React.Component {
                     className="form-control-select"
                     required
                   >   
-                    <option key={null} value={null}></option>
+                    <option value={null}>null</option>
                     {this.state.clinic_sites.map((site) => <option value={site.site_id}>{site.site_name}</option>)}            
                   </select>
                 </label>
