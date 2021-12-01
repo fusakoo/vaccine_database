@@ -208,7 +208,7 @@ class PeopleForm extends React.Component {
                 </label>
               </div>
               <div class="form-group">
-                <label>Clinic site <span className="optional">Please select one or leave blank</span><span className="required">*</span>
+                <label>Clinic site <span className="optional">(Optional)</span>
                   <select
                     value={this.state.site_id}
                     onChange={e => this.setState({ site_id: e.target.value })}

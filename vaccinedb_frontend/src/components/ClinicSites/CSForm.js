@@ -46,8 +46,21 @@ class CSForm extends React.Component {
       city: "",
       postal_code: null,
       county_fips_code: null,
+      counties: [],
       errors: []
     };
+  }
+
+  componentDidMount() {
+    fetch( pathConfig.URL + '/Counties' , {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(results => results.json())
+    .then(data => this.setState({ counties: data })
+    );
   }
 
   HandleSubmit = (e) => {
@@ -148,15 +161,17 @@ class CSForm extends React.Component {
           </label>
         </div>   
         <div class="form-group">
-          <label>County FIPS code <span className="optional">(county_fips_code)</span> <span className="required">*</span>
-            <input
+          <label>County <span className="optional">(county_fips_code | Please create a county first if not available)</span><span className="required">*</span>
+            <select
               value={this.state.county_fips_code}
               onChange={e => this.setState({ county_fips_code: e.target.value })}
-              type="text"
               name="county_fips_code"
-              placeholder="County FIPS code"
-              className="form-control"
-            />
+              className="form-control-select"
+              required
+            >
+              <option key={null} value={null}></option>
+              {this.state.counties.map((county) => <option value={county.county_fips_code}>{county.county_name + ", " + county.state}</option>)}     
+            </select>
           </label>
           <p className="shrink"><span className="optional">See <a href="https://www.census.gov/prod/techdoc/cbp/cbp95/st-cnty.pdf">list of FIPS codes</a> for reference</span></p>
         </div>   
