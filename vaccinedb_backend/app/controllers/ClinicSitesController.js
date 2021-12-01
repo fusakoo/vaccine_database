@@ -43,7 +43,7 @@ exports.getAll = (req, res) => {
 
 // find Clinic Sites based on specified ID from the DB
 exports.getByCounty = (req, res) => {
-  ClinicSites.getByID(req.params.id, (err, data) => {
+  ClinicSites.getByCounty(req.params.county, (err, data) => {
     if (err)
       res.status(500).send({
         message:
