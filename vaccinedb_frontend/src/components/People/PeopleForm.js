@@ -5,7 +5,7 @@ function ValidateAdd(birth_date, site_id) {
 
   const errors = [];
 
-  if (!(/^\d{4}[\-](0?[1-9]|1[012])[\-](0?[1-9]|[12][0-9]|3[01])$/.test(birth_date))) {
+  if (!(/^\d{4}[-](0?[1-9]|1[012])[-](0?[1-9]|[12][0-9]|3[01])$/.test(birth_date))) {
     errors.push("Invalid Format For {birth_date}");
   }
 
@@ -40,36 +40,36 @@ class PeopleForm extends React.Component {
       last_name: "",
       first_name: "",
       birth_date: "",
-      site_id: null,
+      sites: null,
       errors: [],
-      site_ids: [],
+      clinic_sites: [],
       status: 0
     };
   }
 
   componentDidMount() {
-    fetch( pathConfig.URL + '/Clinic_Sites/GetID' , {
+    fetch( pathConfig.URL + '/Clinic_Sites/' , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }
     })
     .then(results => results.json())
-    .then(data => this.setState({ site_ids: data })
+    .then(data => this.setState({ clinic_sites: data })
     );
   }
 
   HandleSubmit = (e) => {
     e.preventDefault();
 
-    if (this.state.status == 1) {
-      if (this.state.last_name == "") this.setState({ last_name: null })
-      if (this.state.first_name == "") this.setState({ first_name: null })
+    if (this.state.status === 1) {
+      if (this.state.last_name === "") this.setState({ last_name: null })
+      if (this.state.first_name === "") this.setState({ first_name: null })
     }
 
-    const { id, last_name, first_name, birth_date, site_id, err, status } = this.state;
+    const { id, last_name, first_name, birth_date, site_id, status } = this.state;
 
-    if (status == 1) { // Update
+    if (status === 1) { // Update
 
       const errors = ValidateUpdate(id, site_id);
       const hasErrors = errors.length > 0;
@@ -169,7 +169,7 @@ class PeopleForm extends React.Component {
           {status === 0 && (
             <>
               <div class="form-group">
-                <label>last_name <span className="required">*</span>
+                <label>Last name <span className="optional">(last_name)</span><span className="required">*</span>
                   <input
                       value={this.state.last_name}
                       onChange={e => this.setState({ last_name: e.target.value })}
@@ -182,7 +182,7 @@ class PeopleForm extends React.Component {
                 </label>
               </div>
               <div class="form-group">
-                <label>first_name <span className="required">*</span>
+                <label>First name <span className="optional">(first_name)</span><span className="required">*</span>
                   <input
                       value={this.state.first_name}
                       onChange={e => this.setState({ first_name: e.target.value })}
@@ -195,7 +195,7 @@ class PeopleForm extends React.Component {
                 </label>
               </div>
               <div class="form-group">
-                <label>birth_date <span className="required">*</span>
+                <label>Birthdate <span className="optional">(birth_date)</span><span className="required">*</span>
                   <input
                       value={this.state.birth_date}
                       onChange={e => this.setState({ birth_date: e.target.value })}
@@ -208,18 +208,16 @@ class PeopleForm extends React.Component {
                 </label>
               </div>
               <div class="form-group">
-                <label>site_id <span className="required">*</span><span className="optional">Please select one</span>
+                <label>Clinic site <span className="optional">Please select one or leave blank</span><span className="required">*</span>
                   <select
                     value={this.state.site_id}
                     onChange={e => this.setState({ site_id: e.target.value })}
-                    type="number"
-                    name="county_fips_code"
-                    placeholder="County FIPS code"
+                    name="site_id"
                     className="form-control-select"
                     required
                   >   
-                    <option key={null} value={null}>null</option>
-                    {this.state.site_ids.map((site_id) => <option key={site_id.site_id} value={site_id.site_id}>{site_id.site_id}</option>)}            
+                    <option key={null} value={null}></option>
+                    {this.state.clinic_sites.map((site) => <option value={site.site_id}>{site.site_name}</option>)}            
                   </select>
                 </label>
               </div>       
@@ -231,7 +229,7 @@ class PeopleForm extends React.Component {
           {status === 1 && (
             <>
               <div class="form-group">
-                  <label>id <span className="required">*</span>
+                  <label>ID <span className="optional">(id)</span><span className="required">*</span>
                     <input
                         value={this.state.id}
                         onChange={e => this.setState({ id: e.target.value })}
@@ -244,7 +242,7 @@ class PeopleForm extends React.Component {
                   </label>
               </div>
               <div class="form-group">
-                <label>last_name <span className="optional">(Optional)</span>
+                <label>Last name <span className="optional">(last_name | Optional)</span>
                   <input
                       value={this.state.last_name}
                       onChange={e => this.setState({ last_name: e.target.value })}
@@ -256,7 +254,7 @@ class PeopleForm extends React.Component {
                 </label>
               </div>
               <div class="form-group">
-                <label>first_name <span className="optional">(Optional)</span>
+                <label>First name <span className="optional">(first_name | Optional)</span>
                   <input
                       value={this.state.first_name}
                       onChange={e => this.setState({ first_name: e.target.value })}
@@ -268,18 +266,17 @@ class PeopleForm extends React.Component {
                 </label>
               </div>
               <div class="form-group">
-                  <label>site_id <span className="required">*</span><span className="optional">Please select one</span>
+                <label>Clinic site <span className="optional">Please select one</span><span className="required">*</span>
                     <select
                       value={this.state.site_id}
                       onChange={e => this.setState({ site_id: e.target.value })}
-                      type="number"
-                      name="county_fips_code"
-                      placeholder="County FIPS code"
+                      name="site_id"
                       className="form-control-select"
                       required
                     >   
-                      <option key={null} value={null}>null</option>
-                      {this.state.site_ids.map((site_id) => <option key={site_id.site_id} value={site_id.site_id}>{site_id.site_id}</option>)}            
+                    <option value={false}>(Do not update)</option>
+                    <option value={null}>null</option>
+                    {this.state.clinic_sites.map((site) => <option value={site.site_id}>{site.site_name}</option>)}            
                     </select>
                   </label>
               </div> 

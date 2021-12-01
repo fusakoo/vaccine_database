@@ -9,7 +9,7 @@ function Validate(id, date_taken) {
     errors.push("Can't Have Negative Or Zero {id}");
   }
 
-  if (!(/^\d{4}[\-](0?[1-9]|1[012])[\-](0?[1-9]|[12][0-9]|3[01])$/.test(date_taken))) {
+  if (!(/^\d{4}[-](0?[1-9]|1[012])[-](0?[1-9]|[12][0-9]|3[01])$/.test(date_taken))) {
     errors.push("Invalid Format For {date_taken}");
   }
 
@@ -24,8 +24,31 @@ class DosesForm extends React.Component {
       id: null,
       research_name: "",
       date_taken: "",
-      errors: []
+      errors: [],
+      people: [],
+      vaccines: []
     };
+  }
+
+  componentDidMount() {
+    fetch( pathConfig.URL + '/Vaccines' , {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(results => results.json())
+    .then(data => this.setState({ vaccines: data })
+    );
+    fetch( pathConfig.URL + '/People' , {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(results => results.json())
+    .then(data => this.setState({ people: data })
+    );
   }
 
   HandleSubmit = (e) => {
@@ -72,29 +95,29 @@ class DosesForm extends React.Component {
         ))}
         <p><span className="required">* </span><span className="optional">Is required</span></p>
         <div class="form-group">
-          <label>id <span className="required">*</span>
-            <input
+          <label>Person's ID <span className="optional">(id)</span><span className="required">*</span>
+            <select
               value={this.state.id}
               onChange={e => this.setState({ id: e.target.value })}
-              type="number"
               name="id"
-              placeholder="Person ID"
-              className="form-control"
+              className="form-control-select"
               required
-            />
+            >
+              {this.state.people.map((person) => <option value={person.id}>{person.id + " (" + person.first_name + " " + person.last_name + ")"}</option>)}     
+            </select>
           </label>
         </div>
         <div class="form-group">
-          <label>research_name <span className="required">*</span>
-            <input
+          <label>Vaccine <span className="optional">(reserach_name)</span><span className="required">*</span>
+            <select
               value={this.state.research_name}
               onChange={e => this.setState({ research_name: e.target.value })}
-              type="text"
               name="research_name"
-              placeholder="Research name"
-              className="form-control"
+              className="form-control-select"
               required
-            />
+            >
+              {this.state.vaccines.map((vaccine) => <option value={vaccine.research_name}>{vaccine.research_name}</option>)}     
+            </select>
           </label>
         </div>
         <div class="form-group">

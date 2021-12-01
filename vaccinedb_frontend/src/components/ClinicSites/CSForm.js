@@ -96,7 +96,7 @@ class CSForm extends React.Component {
         ))}
         <p><span className="required">* </span><span className="optional">Is required</span></p>
         <div class="form-group">
-          <label>site_name <span className="required">*</span>
+          <label>Site name <span className="optional">(site_name)</span> <span className="required">*</span>
             <input
               value={this.state.site_name}
               onChange={e => this.setState({ site_name: e.target.value })}
@@ -109,7 +109,7 @@ class CSForm extends React.Component {
           </label>
         </div>
         <div class="form-group">
-          <label>street_address <span className="required">*</span>
+          <label>Street address <span className="optional">(street_address)</span><span className="required">*</span>
             <input
               value={this.state.street_address}
               onChange={e => this.setState({ street_address: e.target.value })}
@@ -122,7 +122,7 @@ class CSForm extends React.Component {
           </label>
         </div>   
         <div class="form-group">
-          <label>city <span className="required">*</span>
+          <label>City <span className="optional">(city)</span><span className="required">*</span>
             <input
               value={this.state.city}
               onChange={e => this.setState({ city: e.target.value })}
@@ -135,7 +135,7 @@ class CSForm extends React.Component {
           </label>
         </div>   
         <div class="form-group">
-          <label>postal_code <span className="required">*</span>
+          <label>Postal code <span className="optional">(postal_code)</span><span className="required">*</span>
             <input
               value={this.state.postal_code}
               onChange={e => this.setState({ postal_code: e.target.value })}
@@ -148,7 +148,7 @@ class CSForm extends React.Component {
           </label>
         </div>   
         <div class="form-group">
-          <label>county_fips_code <span className="required">*</span>
+          <label>County FIPS code <span className="optional">(county_fips_code)</span> <span className="required">*</span>
             <input
               value={this.state.county_fips_code}
               onChange={e => this.setState({ county_fips_code: e.target.value })}

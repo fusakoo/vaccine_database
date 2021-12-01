@@ -64,7 +64,7 @@ class VaccinesForm extends React.Component {
         ))}
         <p><span className="required">* </span><span className="optional">Is required</span></p>
         <div class="form-group">
-          <label>research_name <span className="required">*</span>
+          <label>Research name <span className="optional">(research_name)</span><span className="required">*</span>
             <input
               value={this.state.research_name}
               onChange={e => this.setState({ research_name: e.target.value })}
@@ -77,7 +77,7 @@ class VaccinesForm extends React.Component {
           </label>
         </div>
         <div class="form-group">
-          <label>manufacturer <span className="required">*</span>
+          <label>Manufacturer <span className="optional">(manufacturer)</span><span className="required">*</span>
             <input
               value={this.state.manufacturer}
               onChange={e => this.setState({ manufacturer: e.target.value })}
@@ -90,7 +90,7 @@ class VaccinesForm extends React.Component {
           </label>
         </div>
         <div class="form-group">
-          <label>vaccine_type <span className="required">*</span>
+          <label>Type <span className="optional">(vaccine_type)</span><span className="required">*</span>
             <input
               value={this.state.vaccine_type}
               onChange={e => this.setState({ vaccine_type: e.target.value })}

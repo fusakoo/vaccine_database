@@ -9,9 +9,6 @@ module.exports = app => {
   // Get all Clinic Sites
   router.get("/", clinicSites.getAll);
 
-  // Get Clinic Site IDs
-  router.get("/GetID", clinicSites.getID);  
-
   // Get Clinic Sites in particular county
   router.get("/:county", clinicSites.getByCounty);
 

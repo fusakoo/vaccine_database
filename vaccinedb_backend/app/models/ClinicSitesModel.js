@@ -35,27 +35,13 @@ ClinicSites.getAll = result => {
     });
   };
 
-ClinicSites.getID = result => {
-  sql.query("SELECT site_id FROM Clinic_Sites ORDER BY site_id ASC", (err, res) => {
+ClinicSites.getByCounty = (county, result) => {
+  sql.query("SELECT cs.site_id, cs.site_name, cs.street_address, cs.city, cs.postal_code FROM Clinic_Sites cs INNER JOIN Counties c ON cs.county_fips_code = c.county_fips_code WHERE c.county_fips_code = ? ORDER BY site_id;", [county], (err, res) => {
     if (err) {
       console.log("Error: ", err);
       result(null, err);
       return;
     }
-
-    console.log("Site IDs: ", res);
-    result(null, res);
-  });
-};
-
-ClinicSites.getByCounty = (id, result) => {
-  sql.query("SELECT cs.site_id, cs.site_name, cs.street_address, cs.city, cs.postal_code FROM Clinic_Sites cs INNER JOIN Counties c ON cs.county_fips_code = c.county_fips_code WHERE c.county_fips_code = ? ORDER BY site_id;", id, (err, res) => {
-    if (err) {
-      console.log("Error: ", err);
-      result(null, err);
-      return;
-    }
-
     console.log("Clinic sites: ", res);
     result(null, res);
   });

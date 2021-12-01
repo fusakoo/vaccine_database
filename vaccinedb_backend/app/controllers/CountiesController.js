@@ -38,15 +38,3 @@ exports.getAll = (req, res) => {
     else res.send(data);
   });
 };
-
-// find all county FIPS codes from the DB
-exports.getFIPS = (req, res) => {
-  Counties.getFIPS((err, data) => {
-    if (err)
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving the FIPS codes."
-      });
-    else res.send(data);
-  });
-};

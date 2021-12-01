@@ -27,19 +27,20 @@ class ClinicSitesInCountiesForm extends React.Component {
     this.state = {
       county_fips_code: null,
       errors: [],
-      clinics: []
+      counties: [],
+      sites: []
     };
   }
 
   componentDidMount() {
-    fetch( pathConfig.URL + '/Counties/FIPS' , {
+    fetch( pathConfig.URL + '/Counties' , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }
     })
     .then(results => results.json())
-    .then(data => this.setState({ clinics: data })
+    .then(data => this.setState({ counties: data })
     );
   }
 
@@ -55,8 +56,30 @@ class ClinicSitesInCountiesForm extends React.Component {
       return;
     }
 
-    // SQL
-    // TODO: Add a functionality where once the user press submit, it'll populate/render the table
+    console.log(county_fips_code)
+
+    fetch( pathConfig.URL + '/Clinic_Sites/' + county_fips_code , {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(results => results.text())
+    .then(data => {
+      var json = JSON.parse(data);
+      var HTML = "";
+      for (var row in json)
+        HTML += "<tr className=\"list-item\"><td>" 
+        + json[row].site_id + "</td><td>" 
+        + json[row].site_name + "</td><td>" 
+        + json[row].street_address + "</td><td>" 
+        + json[row].city + "</td><td>" 
+        + json[row].postal_code + "</td></tr>";
+      document.getElementById("CSBody").innerHTML = HTML;
+    })
+    .catch(error => {
+      alert(error);
+    });
   };
 
   render() {
@@ -71,17 +94,16 @@ class ClinicSitesInCountiesForm extends React.Component {
         ))}
         <p><span className="required">* </span><span className="optional">Is required</span></p>
         <div class="form-group">
-          <label>county_fips_code <span className="required">*</span>
+          <label>County Name <span className="required">*</span>
             <select
               value={this.state.county_fips_code}
               onChange={e => this.setState({ county_fips_code: e.target.value })}
-              type="number"
               name="county_fips_code"
-              placeholder="County FIPS code"
               className="form-control-select"
               required
             >   
-              {this.state.clinics.map((clinic) => <option key={clinic.county_fips_code} value={clinic.county_fips_code}>{clinic.county_fips_code}</option>)}            
+              <option key={null} value={null}></option>
+              {this.state.counties.map((county) => <option value={county.county_fips_code}>{county.county_name + ', ' + county.state}</option>)}            
               </select>
           </label>
         </div>

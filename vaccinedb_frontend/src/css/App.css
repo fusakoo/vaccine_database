@@ -135,7 +135,7 @@ form {
 
 .form-control {
   display: block;
-  width: 80%;
+  width: 75%;
   height: 1.75em;
   padding: 0.375em 0.75em;
   color: #5e6079;
@@ -154,7 +154,7 @@ form {
 
 .form-control-select {
   display: block;
-  width: 80%;
+  width: 77%;
   height: 2.75em;
   padding: 0.5em 0.75em;
   color: #5e6079;
