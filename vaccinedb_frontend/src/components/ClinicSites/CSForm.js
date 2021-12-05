@@ -170,7 +170,7 @@ class CSForm extends React.Component {
               className="form-control-select"
               required
             >
-              <option key={null} value={null}></option>
+              <option value={null}></option>
               {this.state.counties.map((county) => <option value={county.county_fips_code}>{county.county_name + ", " + county.state}</option>)}     
             </select>
           </label>

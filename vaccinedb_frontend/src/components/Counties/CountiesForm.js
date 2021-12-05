@@ -1,6 +1,8 @@
 import React from 'react';
+const UsaStates = require('usa-states').UsaStates;
+const fips = require('fips-county-codes');
 
-function Validate(county_fips_code, state) { 
+function Validate(county_fips_code, county_name, state) { 
 
   const errors = [];
 
@@ -20,6 +22,10 @@ function Validate(county_fips_code, state) {
     errors.push("Invalid Format For {state}");
   }
 
+  if (fips.getByCountyAndState(state, county_name)["fips"] !== county_fips_code) {
+    errors.push("County fips code does not match the county name and state.")
+  }
+
   return errors;
 }
 
@@ -31,8 +37,15 @@ class CountiesForm extends React.Component {
       county_fips_code: null,
       county_name: "",
       state: "",
+      state_list: [],
       errors: []
     };
+  }
+
+  componentDidMount() {
+    var usStates = new UsaStates();
+    this.setState({ state_list: usStates.states })
+    console.log(usStates);
   }
 
   HandleSubmit = (e) => {
@@ -40,7 +53,7 @@ class CountiesForm extends React.Component {
 
     const { county_fips_code, county_name, state } = this.state;
 
-    const errors = Validate(county_fips_code, state);
+    const errors = Validate(county_fips_code, county_name, state);
     const hasErrors = errors.length > 0;
     if (hasErrors) { 
       this.setState({ errors });
@@ -79,7 +92,7 @@ class CountiesForm extends React.Component {
         ))}
         <p><span className="required">* </span><span className="optional">Is required</span></p>
         <div class="form-group">
-          <label>FIPS code <span className="optional">(county_fips_code)</span> <span className="required">*</span>
+          <label>FIPS code <span className="optional">(county_fips_code | Do not include space, e.g. Autauga County, AL = 01001)</span> <span className="required">*</span>
             <input
               value={this.state.county_fips_code}
               onChange={e => this.setState({ county_fips_code: e.target.value })}
@@ -90,10 +103,10 @@ class CountiesForm extends React.Component {
               required
             />
           </label>
-          <p className="shrink"><span className="optional">See <a href="https://www.census.gov/prod/techdoc/cbp/cbp95/st-cnty.pdf">list of FIPS codes</a> for reference</span></p>
+          <p className="shrink"><span className="optional">See <a href="https://www.census.gov/prod/techdoc/cbp/cbp95/st-cnty.pdf" target="_blank" rel="noreferrer">list of FIPS codes</a> for reference</span></p>
         </div>
         <div class="form-group">
-          <label>County <span className="optional">(county_name)</span><span className="required">*</span>
+          <label>County <span className="optional">(county_name | Do not include "County", e.g. Autauga)</span><span className="required">*</span>
             <input
               value={this.state.county_name}
               onChange={e => this.setState({ county_name: e.target.value })}
@@ -107,14 +120,15 @@ class CountiesForm extends React.Component {
         </div>
         <div class="form-group">
           <label>State <span className="optional">(state)</span><span className="required">*</span>
-            <input
+            <select
               value={this.state.state}
               onChange={e => this.setState({ state: e.target.value })}
-              type="text"
               name="state"
-              placeholder="State (e.g. 'CA', 'WA')"
-              className="form-control"
-            />
+              className="form-control-select"
+            >
+              <option value={null}></option>
+              {this.state.state_list.map((state) => <option value={state.abbreviation}>{state.abbreviation + " - " + state.name}</option>)}            
+            </select>
           </label>
         </div>   
         <div class="form-group">

@@ -13,9 +13,9 @@ function Navigation() {
     <>
       <div className="topnav">
           <Link className="App-link" to="/">Home</Link>
-          <Link className="App-link" to="/people">View People</Link>
+          <Link className="App-link" to="/people">View People + Doses</Link>
           <Link className="App-link" to="/vaccines">View Vaccines</Link>
-          <Link className="App-link" to="/clinicsites">View Clinic Sites</Link>
+          <Link className="App-link" to="/clinicsites">View Clinic Sites + Vaccines Available</Link>
           <Link className="App-link" to="/counties">View Counties</Link>
       </div> 
     </>
