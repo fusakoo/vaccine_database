@@ -31,6 +31,12 @@ class VAForm extends React.Component {
         'Content-Type': 'application/json'
       }
     })
+    .then ((response) => {
+      if (response.ok)
+        return response;
+      else
+        throw new Error("Something went wrong querying the database!");
+    })
     .then(results => results.json())
     .then(data => this.setState({ clinics: data })
     ).catch(error => {
@@ -71,7 +77,14 @@ class VAForm extends React.Component {
         site_id:site_id, 
         research_name:research_name
       })
-      }).then(response => response.json())
+      })
+      .then ((response) => {
+        if (response.ok)
+          return response;
+        else
+          throw new Error("Something went wrong querying the database!");
+      })
+      .then(response => response.json())
       .then(data => {
         if (alert("Successfully added a new vaccine availability.")) {
         } else {

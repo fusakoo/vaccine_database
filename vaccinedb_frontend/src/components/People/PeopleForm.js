@@ -57,6 +57,12 @@ class PeopleForm extends React.Component {
         'Content-Type': 'application/json'
       }
     })
+    .then ((response) => {
+      if (response.ok)
+        return response;
+      else
+        throw new Error("Something went wrong querying the database!");
+    })
     .then(results => results.json())
     .then(data => this.setState({ clinic_sites: data })
     ).catch(error => {
@@ -95,7 +101,14 @@ class PeopleForm extends React.Component {
           site_id:site_id,
           should_update_site_id:should_update_site_id
         })
-      }).then(response => response.json())
+      })
+      .then ((response) => {
+        if (response.ok)
+          return response;
+        else
+          throw new Error("Something went wrong querying the database!");
+      })
+      .then(response => response.json())
       .then(data => {
         if (alert("Successfully updated an existing person.")) {
         } else {
@@ -126,7 +139,14 @@ class PeopleForm extends React.Component {
         birth_date:birth_date, 
         site_id:site_id
       })
-      }).then(response => response.json())
+      })
+      .then ((response) => {
+        if (response.ok)
+          return response;
+        else
+          throw new Error("Something went wrong querying the database!");
+      })
+      .then(response => response.json())
       .then(data => {
         if (alert("Successfully added a new person.")) {
         } else {

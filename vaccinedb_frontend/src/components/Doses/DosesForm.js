@@ -36,6 +36,12 @@ class DosesForm extends React.Component {
         'Content-Type': 'application/json'
       }
     })
+    .then ((response) => {
+      if (response.ok)
+        return response;
+      else
+        throw new Error("Something went wrong querying the database!");
+    })
     .then(results => results.json())
     .then(data => this.setState({ vaccines: data })
     ).catch(error => {
@@ -76,7 +82,14 @@ class DosesForm extends React.Component {
         research_name:research_name, 
         date_taken:date_taken
       })
-      }).then(response => response.json())
+      })
+      .then ((response) => {
+        if (response.ok)
+          return response;
+        else
+          throw new Error("Something went wrong querying the database!");
+      })
+      .then(response => response.json())
       .then(data => {
         if (alert("Successfully added a new dose.")) {
         } else {

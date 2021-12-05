@@ -41,7 +41,14 @@ class VaccinesForm extends React.Component {
         manufacturer:manufacturer,
         vaccine_type:vaccine_type
       })
-    }).then(response => response.json())
+    })
+    .then ((response) => {
+      if (response.ok)
+        return response;
+      else
+        throw new Error("Something went wrong querying the database!");
+    })
+    .then(response => response.json())
     .then(data => {
       if (alert("Successfully added a new vaccine.")) {
       } else {

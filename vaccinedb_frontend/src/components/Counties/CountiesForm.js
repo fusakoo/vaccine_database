@@ -22,7 +22,11 @@ function Validate(county_fips_code, county_name, state) {
     errors.push("Invalid Format For {state}");
   }
 
-  if (fips.getByCountyAndState(state, county_name)["fips"] !== county_fips_code) {
+  try {
+    if (fips.getByCountyAndState(state, county_name)["fips"] !== county_fips_code) {
+      errors.push("County fips code does not match the county name and state.")
+    }
+  } catch (error) {
     errors.push("County fips code does not match the county name and state.")
   }
 
@@ -69,7 +73,14 @@ class CountiesForm extends React.Component {
         county_name:county_name, 
         state:state
       })
-      }).then(response => response.json())
+      })
+      .then ((response) => {
+        if (response.ok)
+          return response;
+        else
+          throw new Error("Something went wrong querying the database!");
+      })
+      .then(response => response.json())
       .then(data => {
         if (alert("Successfully added a new county.")) {
         } else {

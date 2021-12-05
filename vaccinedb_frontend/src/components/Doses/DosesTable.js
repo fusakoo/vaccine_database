@@ -17,7 +17,14 @@ class DosesTable extends React.Component {
         research_name: research_name, 
         date_taken: date_taken
       })
-    }).then(response => response.text())
+    })
+    .then ((response) => {
+      if (response.ok)
+        return response;
+      else
+        throw new Error("Something went wrong querying the database!");
+    })
+    .then(response => response.text())
     .then(data => {
       if (alert("Successfully deleted the record.")) {
       } else {
@@ -35,7 +42,14 @@ class DosesTable extends React.Component {
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(response => response.text())
+    })
+    .then ((response) => {
+      if (response.ok)
+        return response;
+      else
+        throw new Error("Something went wrong querying the database!");
+    })
+    .then(response => response.text())
     .then(data => {
       var json = JSON.parse(data);
       let doses = [];

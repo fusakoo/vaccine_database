@@ -57,6 +57,12 @@ class CSForm extends React.Component {
         'Content-Type': 'application/json'
       }
     })
+    .then ((response) => {
+      if (response.ok)
+        return response;
+      else
+        throw new Error("Something went wrong querying the database!");
+    })
     .then(results => results.json())
     .then(data => this.setState({ counties: data })
     ).catch(error => {
@@ -88,7 +94,14 @@ class CSForm extends React.Component {
         postal_code:postal_code,
         county_fips_code:county_fips_code
       })
-      }).then(response => response.json())
+      })
+      .then ((response) => {
+        if (response.ok)
+          return response;
+        else
+          throw new Error("Something went wrong querying the database!");
+      })
+      .then(response => response.json())
       .then(data => {
         if (alert("Successfully added a new clinic site.")) {
         } else {

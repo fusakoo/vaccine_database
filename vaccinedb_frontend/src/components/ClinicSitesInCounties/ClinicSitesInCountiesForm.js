@@ -38,6 +38,12 @@ class ClinicSitesInCountiesForm extends React.Component {
         'Content-Type': 'application/json'
       }
     })
+    .then ((response) => {
+      if (response.ok)
+        return response;
+      else
+        throw new Error("Something went wrong querying the database!");
+    })
     .then(results => results.json())
     .then(data => this.setState({ counties: data })
     ).catch(error => {
@@ -62,6 +68,12 @@ class ClinicSitesInCountiesForm extends React.Component {
       headers: {
         'Content-Type': 'application/json'
       }
+    })
+    .then ((response) => {
+      if (response.ok)
+        return response;
+      else
+        throw new Error("Something went wrong querying the database!");
     })
     .then(results => results.text())
     .then(data => {

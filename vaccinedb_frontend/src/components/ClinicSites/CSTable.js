@@ -8,7 +8,14 @@ function CSTable() {
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(response => response.text())
+    })
+    .then ((response) => {
+      if (response.ok)
+        return response;
+      else
+        throw new Error("Something went wrong querying the database!");
+    })
+    .then(response => response.text())
     .then(data => {
       var json = JSON.parse(data);
       var HTML = "";
