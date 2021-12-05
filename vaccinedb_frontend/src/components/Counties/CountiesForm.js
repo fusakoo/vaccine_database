@@ -45,7 +45,6 @@ class CountiesForm extends React.Component {
   componentDidMount() {
     var usStates = new UsaStates();
     this.setState({ state_list: usStates.states })
-    console.log(usStates);
   }
 
   HandleSubmit = (e) => {

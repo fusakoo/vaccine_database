@@ -57,8 +57,6 @@ class ClinicSitesInCountiesForm extends React.Component {
       return;
     }
 
-    console.log(county_fips_code)
-
     fetch( process.env.REACT_APP_BACKEND_URL + '/Clinic_Sites/' + county_fips_code , {
       method: 'GET',
       headers: {
@@ -85,8 +83,6 @@ class ClinicSitesInCountiesForm extends React.Component {
 
   render() {
     const { errors } = this.state;
-
-    console.log(this.state.clinics);
 
     return (
       <form className="new-input" onSubmit={this.HandleSubmit}>

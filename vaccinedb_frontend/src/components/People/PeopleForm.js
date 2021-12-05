@@ -173,7 +173,7 @@ class PeopleForm extends React.Component {
           <p><span className="required">* </span><span className="optional">Is required</span></p>
           {status === 0 && (
             <>
-              <div class="form-group">
+              <div className="form-group">
                 <label>Last name <span className="optional">(last_name)</span><span className="required">*</span>
                   <input
                       value={this.state.last_name}
@@ -186,7 +186,7 @@ class PeopleForm extends React.Component {
                   />
                 </label>
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label>First name <span className="optional">(first_name)</span><span className="required">*</span>
                   <input
                       value={this.state.first_name}
@@ -199,7 +199,7 @@ class PeopleForm extends React.Component {
                   />
                 </label>
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label>Birthdate <span className="optional">(birth_date)</span><span className="required">*</span>
                   <input
                       value={this.state.birth_date}
@@ -212,7 +212,7 @@ class PeopleForm extends React.Component {
                   />
                 </label>
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label>Clinic site <span className="optional">(Optional)</span>
                   <select
                     value={this.state.site_id}
@@ -226,14 +226,14 @@ class PeopleForm extends React.Component {
                   </select>
                 </label>
               </div>       
-              <div class="form-group">
+              <div className="form-group">
                   <button type="submit" id="submit" className="submit-button">Add New</button>
               </div> 
             </>
           )}
           {status === 1 && (
             <>
-              <div class="form-group">
+              <div className="form-group">
                   <label>ID <span className="optional">(id)</span><span className="required">*</span>
                     <input
                         value={this.state.id}
@@ -246,7 +246,7 @@ class PeopleForm extends React.Component {
                     />
                   </label>
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label>Last name <span className="optional">(last_name | Optional)</span>
                   <input
                       value={this.state.last_name}
@@ -258,7 +258,7 @@ class PeopleForm extends React.Component {
                   />
                 </label>
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label>First name <span className="optional">(first_name | Optional)</span>
                   <input
                       value={this.state.first_name}
@@ -270,7 +270,7 @@ class PeopleForm extends React.Component {
                   />
                 </label>
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label>Clinic site <span className="optional">Please select one</span><span className="required">*</span>
                     <select
                       value={this.state.site_id}
