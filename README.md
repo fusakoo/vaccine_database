@@ -1,5 +1,5 @@
 # vaccine_database
-Vaccine database website backed by mariadb created by fusakoo and exleyt.
+Vaccine database website backed by mariadb created by fusakoo and exleyt. This was creatd as Oregon State University's CS340 portfolio project.
 - vaccinedb_backend: created with nodejs, express, mysql, cors
 - vaccinedb_frontend: created with react
 
